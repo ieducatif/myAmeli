@@ -1,0 +1,49 @@
+<!--
+Filtre rapide
+-->
+<ul class="list-menu">
+    <li data-ng-repeat="menu in menus" data-ng-click="selectItem($index)" data-ng-class="{active: $index === selectedIndex}">
+        <a href="{{menu.url}}">
+            <img data-ng-src="{{menu.image}}">
+        </a>
+    </li>
+</ul>
+
+<!--
+Liste des RDV
+-->
+<ul class="list-rdv" data-ng-repeat="(date, value) in items | filter : query | groupBy :'dateJMA' | orderBy : 'date'">
+
+    <li class="date">{{date}}</li>
+
+    <li data-ng-repeat="item in value| orderBy : 'date'">
+
+        <div class="avatar" style="background-image:url({{item.beneficiaire.avatar}})">
+
+        </div>
+
+        <a href="#rdv-detail/{{item.id}}">
+
+            <div class="header">
+
+                <div class="heure">{{item.date| date:"hh:mm"}}</div>
+
+                <div class="etat {{item.etat}}"></div>
+
+            </div>
+
+            <div class="content">
+
+                <h4 class="titre">{{item.titre}}</h4>
+
+            </div>
+        </a>
+    </li>
+</ul>
+
+<!--
+Bouton flottant : créer un nouvel évènement
+-->
+<button class="btn flottant" data-ng-click="createEvenement()">
+    <img src="img/create-white.svg">
+</button>

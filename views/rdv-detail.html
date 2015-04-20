@@ -1,0 +1,82 @@
+<div class="detail-rdv animated bounceInDown">
+
+    <header class="header">
+
+        <div class="date">
+            {{item.date| date:"d/MM/yyyy"}}
+        </div>
+
+        <div class="heure">
+            {{item.date| date:"hh:mm"}}
+        </div>
+
+    </header>
+
+    <div class="content">
+
+        <h4 class="titre">{{item.titre}}</h4>
+
+        <div class="numero">{{item.numero}}</div>
+
+        <address class="adresse">{{item.adresse}}</address>
+
+        <a href="tel:{{item.telephone}}" class="telephone">{{item.telephone}}</a>
+
+        <!--
+        Redirige vers Google Maps. Lance l'application si installée sinon le navigateur.
+        -->
+        <a data-ng-href="https://www.google.fr/maps/dir/ma+position/{{item.adresse}}" target="_blank" class="itineraire">Itinéraire</a>
+
+        <!--
+        ngMap
+        -->
+        <map class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true">
+          <marker position="{{item.adresse}}" title="Ici" visible="true"></marker>
+        </map>
+
+        <blockquote class="notes">
+            <h3>Notes</h3>
+            <div contenteditable="true">{{item.notes}}</div>
+        </blockquote>
+
+    </div>
+
+    <footer class="footer">
+
+        <button class="btn warning" data-ng-click="duplicateEvenement()">
+
+            <embed src="img/add.svg" type="image/svg+xml" id="btn-1" onload="svgFill(this.id, 'Core', 'deepskyblue')" class="icon" />
+        </button>
+
+        <button class="btn success" data-ng-click="archiveEvenement()">
+
+            <embed src="img/check.svg" type="image/svg+xml" id="btn-2" onload="svgFill(this.id, 'Core', 'yellowgreen')" class="icon" />
+        </button>
+
+        <button class="btn danger" data-ng-click="deleteEvenement()">
+
+            <embed src="img/cancel.svg" type="image/svg+xml" id="btn-3" onload="svgFill(this.id, 'Core', 'red')" class="icon" />
+        </button>
+
+    </footer>
+
+</div>
+
+<script>
+
+    /*
+     * Permet de changer la couleur de remplissage d'un élément du fichier SVG.
+     *
+     * @idSVG : id de l'image
+     * @idElement : id de l'élement à colorer dans le SVG
+     * @color : couleur à utiliser
+     */
+    var svgFill = function (idSVG, idElement, color){
+
+        var svg = document.getElementById(idSVG);
+
+        var element = svg.getSVGDocument().getElementById(idElement);
+
+        element.setAttribute("fill", color);
+    };
+</script>
