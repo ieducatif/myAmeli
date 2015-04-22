@@ -1,7 +1,5 @@
 /*
  * Directives
- *
- * A FAIRE : Regrouper toutes les directives dans ce fichier
  */
 
 /*
@@ -37,5 +35,26 @@ app.directive("onScrollTop", function ($document){
 
             $document.unbind('scroll', onScroll);
         });
+    };
+});
+
+/*
+ * popup : Affiche une popup
+ *
+ * Utilsation :
+ * - Dans la vue : ajouter <popup></popup>
+ * - Dans le controller : $scope.popUrl = 'views/popups/nom-de-la-popup.html';
+ */
+app.directive('popup', function (){
+
+    return {
+        restrict : 'E',
+        link : function (scope, element, attrs){
+
+            /*
+             * A VOIR :
+             */
+        },
+        template : '<div ng-include="popUrl"></div>'
     };
 });

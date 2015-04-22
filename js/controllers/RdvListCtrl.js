@@ -1,8 +1,8 @@
 /*
  * ListCtrl : Liste tous les évènements (RDV, campagne de communication etc...)
  */
-Controllers.controller('RdvListCtrl', ['$scope', '$http', '$filter',
-    function ($scope, $http, $filter){
+Controllers.controller('RdvListCtrl', ['$scope', '$http', '$filter', '$window',
+    function ($scope, $http, $filter, $window){
 
         /*
          * Récupère les données depuis l'API
@@ -98,5 +98,10 @@ Controllers.controller('RdvListCtrl', ['$scope', '$http', '$filter',
         $scope.createEvenement = function (){
 
             console.log("createEvenement", this);
+
+            /*
+             * Redirige vers la vue ps-search
+             */
+            $window.location.hash = '#/ps-search';
         };
     }]);

@@ -17,7 +17,15 @@ app.config(['$routeProvider', function ($routeProvider){
                 templateUrl : 'views/rdv-detail.html',
                 controller : 'RdvDetailCtrl'
             }).
+            when('/rdv-create', {
+                templateUrl : 'views/rdv-create.html',
+                controller : 'RdvCreateCtrl'
+            }).
             when('/ps-search', {
+                templateUrl : 'views/ps-search.html',
+                controller : 'PsSearchCtrl'
+            }).
+            when('/ps-search/:numero', {
                 templateUrl : 'views/ps-search.html',
                 controller : 'PsSearchCtrl'
             }).

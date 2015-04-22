@@ -2,6 +2,8 @@
 
     <header class="header">
 
+        <div class="avatar" style="background-image:url({{item.beneficiaire.avatar}})"></div>
+
         <div class="date">
             {{item.date| date:"d/MM/yyyy"}}
         </div>
@@ -14,6 +16,23 @@
 
     <div class="content">
 
+        <!--
+Etat et détail du remboursement
+        -->
+        <div class="remboursement {{item.etat}}">
+
+            <div class="etat">
+                <div class="{{item.etat}}"></div>
+            </div>
+
+            <div data-ng-if="item.etat === true" class="date">{{item.remboursement.date| date:'dd/MM/yyyy'}}</div>
+
+            <div data-ng-if="item.etat === true" class="montant">{{item.remboursement.montant| currency:'':2}} €</div>
+
+            <div data-ng-if="item.etat === false" class="message">En attente</div>
+
+        </div>
+
         <h4 class="titre">{{item.titre}}</h4>
 
         <div class="numero">{{item.numero}}</div>
@@ -23,16 +42,14 @@
         <a href="tel:{{item.telephone}}" class="telephone">{{item.telephone}}</a>
 
         <!--
-        Redirige vers Google Maps. Lance l'application si installée sinon le navigateur.
+Redirige vers Google Maps. Lance l'application si installée sinon le navigateur.
         -->
         <a data-ng-href="https://www.google.fr/maps/dir/ma+position/{{item.adresse}}" target="_blank" class="itineraire">Itinéraire</a>
 
         <!--
-        ngMap
+ngMap
         -->
-        <map class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true">
-          <marker position="{{item.adresse}}" title="Ici" visible="true"></marker>
-        </map>
+        <map class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
 
         <blockquote class="notes">
             <h3>Notes</h3>
@@ -62,8 +79,12 @@
 
 </div>
 
-<script>
+<!--
+Reçoit les popup : voir directives.js
+-->
+<popup></popup>
 
+<script>
     /*
      * Permet de changer la couleur de remplissage d'un élément du fichier SVG.
      *

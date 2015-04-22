@@ -1,0 +1,28 @@
+<!--
+Masque transparent
+-->
+<div class="popup-masque"></div>
+
+<!--
+Popup personalisable
+-->
+<div class="popup {{popup.class}}">
+
+    <header class="header">
+        {{popup.titre}}
+    </header>
+
+    <div class="content">
+        {{popup.message}}
+    </div>
+
+    <footer class="footer">
+        <button ng-click="popup.boutons.confirm.action" class="btn">
+            {{popup.boutons.confirm.titre}}
+        </button>
+
+        <button ng-click="popup.boutons.cancel.action" class="btn">
+            {{popup.boutons.cancel.titre}}
+        </button>
+    </footer>
+</div>
