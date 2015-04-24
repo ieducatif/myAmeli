@@ -53,7 +53,7 @@ ngMap
 
         <blockquote class="notes">
             <h3>Notes</h3>
-            <div contenteditable="true">{{item.notes}}</div>
+            <div contenteditable="true" data-ng-blur="notesChange()">{{item.notes}}</div>
         </blockquote>
 
     </div>
@@ -62,12 +62,12 @@ ngMap
 
         <button class="btn warning" data-ng-click="duplicateEvenement()">
 
-            <embed src="img/add.svg" type="image/svg+xml" id="btn-1" onload="svgFill(this.id, 'Core', 'deepskyblue')" class="icon" />
+            <embed src="img/add.svg" type="image/svg+xml" id="btn-1" onload="svgFill(this.id, 'Core', 'green')" class="icon" />
         </button>
 
         <button class="btn success" data-ng-click="archiveEvenement()">
 
-            <embed src="img/check.svg" type="image/svg+xml" id="btn-2" onload="svgFill(this.id, 'Core', 'yellowgreen')" class="icon" />
+            <embed src="img/archive.svg" type="image/svg+xml" id="btn-2" onload="svgFill(this.id, 'Core', 'orange')" class="icon" />
         </button>
 
         <button class="btn danger" data-ng-click="deleteEvenement()">
@@ -82,22 +82,22 @@ ngMap
 <!--
 Reçoit les popup : voir directives.js
 -->
-<popup></popup>
+<popup ng-translude></popup>
 
 <script>
-    /*
-     * Permet de changer la couleur de remplissage d'un élément du fichier SVG.
-     *
-     * @idSVG : id de l'image
-     * @idElement : id de l'élement à colorer dans le SVG
-     * @color : couleur à utiliser
-     */
-    var svgFill = function (idSVG, idElement, color){
+            /*
+             * Permet de changer la couleur de remplissage d'un élément du fichier SVG.
+             *
+             * @idSVG : id de l'image
+             * @idElement : id de l'élement à colorer dans le SVG
+             * @color : couleur à utiliser
+             */
+            var svgFill = function (idSVG, idElement, color){
 
-        var svg = document.getElementById(idSVG);
+                var svg = document.getElementById(idSVG);
 
-        var element = svg.getSVGDocument().getElementById(idElement);
+                var element = svg.getSVGDocument().getElementById(idElement);
 
-        element.setAttribute("fill", color);
-    };
+                element.setAttribute("fill", color);
+            };
 </script>

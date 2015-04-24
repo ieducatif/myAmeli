@@ -49,12 +49,7 @@ app.directive('popup', function (){
 
     return {
         restrict : 'E',
-        link : function (scope, element, attrs){
-
-            /*
-             * A VOIR :
-             */
-        },
+        translude : true,
         template : '<div ng-include="popUrl"></div>'
     };
 });

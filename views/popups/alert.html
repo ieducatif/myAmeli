@@ -1,12 +1,12 @@
 <!--
 Masque transparent
 -->
-<div class="popup-masque"></div>
+<div class="popup-masque" data-ng-click="cancel()"></div>
 
 <!--
 Popup personalisable
 -->
-<div class="popup {{popup.class}}">
+<div class="popup animated bounceInDown {{popup.class}}">
 
     <header class="header">
         {{popup.titre}}
@@ -17,11 +17,11 @@ Popup personalisable
     </div>
 
     <footer class="footer">
-        <button ng-click="popup.boutons.confirm.action" class="btn">
+        <button data-ng-click="confirm()" class="btn">
             {{popup.boutons.confirm.titre}}
         </button>
 
-        <button ng-click="popup.boutons.cancel.action" class="btn">
+        <button data-ng-click="cancel()" class="btn">
             {{popup.boutons.cancel.titre}}
         </button>
     </footer>

@@ -1,57 +1,16 @@
 /*
  * ListCtrl : Liste tous les évènements (RDV, campagne de communication etc...)
  */
-Controllers.controller('RdvListCtrl', ['$scope', '$http', '$filter', '$window',
-    function ($scope, $http, $filter, $window){
+Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data',
+    function ($scope, $filter, $window, Data){
 
         /*
-         * Récupère les données depuis l'API
+         * @items : objet qui contient tous les évènements récupérées depuis le service Data
          */
-        $http.get('datas/data.json').success(function (data){
-
-            /*
-             * On crée ce tableau pour y ajouter des données manipulées
-             */
-            var arrItems = [];
-
-            angular.forEach(data, function (item){
-
-                /*
-                 *  @titre :
-                 *   - Prenom Nom du PS
-                 *   - Raison sociale de l'établissement
-                 *
-                 *  @type :
-                 *   - rdv : rdv pris par l'utilisateur
-                 *
-                 *  @etat :
-                 *   - true : remboursé
-                 *   - false : non remboursé
-                 */
-                arrItems.push({
-                    "id" : item.id,
-                    "date" : item.date,
-                    "titre" : item.titre,
-                    "numero" : item.numero,
-                    "adresse" : item.adresse,
-                    "telephone" : item.telephone,
-                    "type" : item.type,
-                    "etat" : item.etat,
-                    "dateJMA" : $filter('date')(item.date, "dd/MM/yyyy"),
-                    "notes" : item.notes,
-                    "remboursement" : item.remboursement,
-                    "beneficiaire" : item.beneficiaire
-                });
-            });
-
-            /*
-             * @items : objet qui contient tous les évènements + les données insérés par calculs
-             */
-            $scope.items = arrItems;
-        });
+        $scope.items = Data.getRdvList();
 
         /*
-         * Menu qui permet de filtrer rapidement les évènements. Charge {{query}}.
+         * @menus : menu qui permet de filtrer rapidement les évènements. Charge {{query}}.
          */
         $scope.menus = [
             {
@@ -96,8 +55,6 @@ Controllers.controller('RdvListCtrl', ['$scope', '$http', '$filter', '$window',
          * createEvenement() : créer un nouvel évènement.
          */
         $scope.createEvenement = function (){
-
-            console.log("createEvenement", this);
 
             /*
              * Redirige vers la vue ps-search

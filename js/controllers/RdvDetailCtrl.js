@@ -1,52 +1,138 @@
 /*
  * DetailCtrl : affiche la carte détaillée de l'évènement selectionné
  */
-Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$http',
-    function ($scope, $window, $routeParams, $http){
+Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', 'Data',
+    function ($scope, $window, $routeParams, Data){
 
         /*
          * @$routeParams.id : contient l'id de l'évenement
          */
 
         /*
-         * A FAIRE : récupérer les données depuis localStorage pour éviter de requêter à nouveau
+         * Récupère le détail de l'évènement depuis le service Data
          */
-        $http.get('datas/data.json').success(function (data){
+        $scope.item = Data.getRdvDetail();
 
-            angular.forEach(data, function (item, key){
+        /*
+         * Fonctions liées aux boutons de la vue
+         */
 
-                if(item.id == $routeParams.id){
+        /*
+         * notesChange() : mise à jour des notes
+         */
+        $scope.notesChange = function (){
 
-                    /*
-                     * Charge les données de l'évènement.
-                     */
-                    $scope.item = data[key];
-                    return;
-                }
+            Data.updateRdv({
+                'notes' : $scope.item.notes
             });
-        });
+        };
+
         /*
          * duplicateEvenement() : dupliquer un évènement.
          */
         $scope.duplicateEvenement = function (){
 
-            console.log("duplicateEvenement", $scope.item);
             /*
-             * Appelle la vue ps-search en passant le numéro de PS
+             * Popup de confirmation
              */
-            $window.location.hash = '#/ps-search/' + $scope.item.numero;
+            $scope.popUrl = 'views/popups/alert.html';
+
+            /*
+             * Personnalisation de la popup
+             */
+            $scope.popup = {
+                "titre" : "Dupliquer",
+                "message" : "Voulez-vous dupliquer cet évènement ?",
+                "class" : "success",
+                "boutons" : {
+                    "confirm" : {
+                        "titre" : "Oui",
+                        "action" : "confirm()"
+                    },
+                    "cancel" : {
+                        "titre" : "Non",
+                        "action" : "cancel()"
+                    }
+                }
+            };
+
+            /*
+             * L'utilisateur confirme la duplication
+             */
+            $scope.confirm = function (){
+
+                /*
+                 * Appelle la vue ps-search en passant le numéro de PS
+                 */
+                $window.location.hash = '#/ps-search/' + $scope.item.numero;
+            };
+
+            /*
+             * L'utilisateur annule l'archivage
+             */
+            $scope.cancel = function (){
+
+                /*
+                 * Vide la vue
+                 */
+                $scope.popUrl = null;
+            };
         };
+
         /*
          * archiveEvenement() : archiver un évènement.
          */
         $scope.archiveEvenement = function (){
 
-            console.log("archiveEvenement", $scope.item);
             /*
-             *
-             * A FAIRE :
+             * Popup de confirmation
              */
+            $scope.popUrl = 'views/popups/alert.html';
 
+            /*
+             * Personnalisation de la popup
+             */
+            $scope.popup = {
+                "titre" : "Archiver",
+                "message" : "Êtes-vous sûr de vouloir archiver cet évènement ?",
+                "class" : "warning",
+                "boutons" : {
+                    "confirm" : {
+                        "titre" : "Oui",
+                        "action" : "confirm()"
+                    },
+                    "cancel" : {
+                        "titre" : "Non",
+                        "action" : "cancel()"
+                    }
+                }
+            };
+
+            /*
+             * L'utilisateur confirme l'archivage
+             */
+            $scope.confirm = function (){
+
+                /*
+                 * Actions :
+                 * 1 - Archive l'évènement localStorage
+                 * 2 - Archive le rdv sur le serveur
+                 * 3 - Rediriger vers la page d'accueil
+                 */
+
+                $window.location.hash = '#/';
+            };
+
+            /*
+             * L'utilisateur annule l'archivage
+             */
+            $scope.cancel = function (){
+
+                /*
+                 * Vide la vue
+                 */
+                $scope.popUrl = null;
+            };
         };
 
         /*
@@ -63,17 +149,17 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
              * Personnalisation de la popup
              */
             $scope.popup = {
-                "titre" : "Confirmation",
+                "titre" : "Supprimer",
                 "message" : "Êtes-vous sûr de vouloir supprimer cet évènement ?",
                 "class" : "danger",
                 "boutons" : {
                     "confirm" : {
                         "titre" : "Oui",
-                        "action" : "deleteConfirm()"
+                        "action" : "confirm()"
                     },
                     "cancel" : {
                         "titre" : "Non",
-                        "action" : "deleteCancel()"
+                        "action" : "cancel()"
                     }
                 }
             };
@@ -81,23 +167,28 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
             /*
              * L'utilisateur confirme la suppression
              */
-            $scope.deleteConfirm = function (){
-
-                alert();
+            $scope.confirm = function (){
 
                 /*
-                 * Appel de la page d'accueil
+                 * Actions :
+                 * 1 - Supprimer le rdv dans localStorage
+                 * 2 - Supprimer le rdv sur le serveur
+                 * 3 - Rediriger vers la page d'accueil
                  */
+                Data.deleteRdv();
 
-                $window.location.hash = '#/rdv-list';
+                $window.location.hash = '#/';
             };
 
             /*
-             * L'utilisateur annule la suppression
+             * L'utilisateur annule
              */
-            $scope.deleteCancel = function (){
+            $scope.cancel = function (){
 
-                console.log("cancel");
+                /*
+                 * Vide la vue
+                 */
+                $scope.popUrl = null;
             };
         };
     }]);

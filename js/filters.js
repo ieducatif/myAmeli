@@ -1,10 +1,3 @@
 /*
- * checkmark : true/false
+ * Regrouper les filtres dans ce fichier
  */
-Filters.filter('checkmark', function(){
-
-    return function(input){
-
-        return input ? '\u2713' : '\u2718';
-    };
-});
