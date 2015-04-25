@@ -55,9 +55,13 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
                             angular.forEach(data, function (item){
 
                                 /*
-                                 * Ajoute la date au format classique pour le regouprement par date
+                                 * Ajoute la date sans l'heure pour le regroupement par date
                                  */
-                                item.dateJMA = $filter('date')(item.date, "dd/MM/yyyy");
+                                var date = $filter('date')(item.date, "dd/MM/yyyy").split('/');
+
+                                var timestamp = new Date(date[1] + '/' + date[0] + '/' + date[2]).getTime();
+
+                                item.dateJour = timestamp;
 
                                 /*
                                  * Ajoute l'item dans le tableau des RDV
@@ -136,10 +140,6 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
              */
             updateRdv : function (params){
 
-                console.log(params);
-
-                return;
-
                 var data = localStorageService.get("data-rdv");
 
                 /*
@@ -151,8 +151,12 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
 
                     if(item.id == $routeParams.id){
 
-                        angular.forEach(params, function (param, value){
+                        angular.forEach(params, function (value, param){
 
+                            /*
+                             * Met l'élement avec la nouvelle valeur
+                             */
+                            item[param] = value;
                         });
                     }
 

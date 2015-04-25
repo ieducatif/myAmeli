@@ -1,0 +1,87 @@
+<!--
+Masque transparent
+-->
+<div class="popup-masque" data-ng-click="cancel()"></div>
+
+<!--
+Popup personalisable
+-->
+<div class="popup animated bounceInDown {{popup.class}}">
+
+    <form novalidate>
+
+        <header class="header">
+            {{popup.titre}}
+        </header>
+
+        <div class="content">
+            <p>{{popup.message}}</p>
+
+            <div class="date">
+                <select
+                    data-ng-change="onChangeDate(dateJour, 'jour')"
+                    data-ng-model="dateJour"
+                    class="jour">
+                    <option
+                        data-ng-repeat="jour in jours"
+                        data-ng-selected="jour == (item.date | date:'dd')"
+                        data-ng-value="{{jour}}">{{jour| formatZero:2}}</option>
+                </select>
+                /
+                <select
+                    data-ng-change="onChangeDate(dateMois, 'mois')"
+                    data-ng-model="dateMois"
+                    class="mois">
+                    <option
+                        data-ng-repeat="mois in mois"
+                        data-ng-selected="mois == (item.date | date:'MM')"
+                        data-ng-value="{{mois}}">{{mois| formatZero:2}}</option>
+                </select>
+                /
+                <select
+                    data-ng-change="onChangeDate(dateAnnee, 'annee')"
+                    data-ng-model="dateAnnee"
+                    class="annee">
+                    <option
+                        data-ng-repeat="annee in annees"
+                        data-ng-selected="annee == (item.date | date:'yyyy')"
+                        data-ng-value="{{annee}}">{{annee}}</option>
+                </select>
+            </div>
+
+            <div class="date">
+                <select
+                    data-ng-change="onChangeDate(dateHeure, 'heure')"
+                    data-ng-model="dateHeure"
+                    class="heure">
+                    <option
+                        data-ng-repeat="heure in heures"
+                        data-ng-selected="heure == (item.date | date:'hh')"
+                        data-ng-value="{{heure}}">{{heure| formatZero:2}}</option>
+                </select>
+                :
+                <select
+                    data-ng-change="onChangeDate(dateMinute, 'minute')"
+                    data-ng-model="dateMinute"
+                    class="minute">
+                    <option
+                        data-ng-repeat="minute in minutes"
+                        data-ng-selected="minute == (item.date | date:'mm')"
+                        data-ng-value="{{minute}}">{{minute| formatZero:2}}</option>
+                </select>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <button data-ng-click="confirm()" class="btn">
+                {{popup.boutons.confirm.titre}}
+            </button>
+
+            <button data-ng-click="cancel()" class="btn">
+                {{popup.boutons.cancel.titre}}
+            </button>
+        </footer>
+
+    </form>
+
+</div>

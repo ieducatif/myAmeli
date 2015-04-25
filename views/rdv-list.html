@@ -12,9 +12,9 @@ Filtre rapide
 <!--
 Liste des RDV
 -->
-<ul class="list-rdv" data-ng-repeat="(date, value) in items | filter : query | groupBy :'dateJMA' | orderBy : 'date'">
+<ul class="list-rdv" data-ng-repeat="(date, value) in items | filter : query | groupBy :'dateJour'">
 
-    <li class="date">{{date}}</li>
+    <li class="date">{{date|date:'dd/MM/yyyy'}}</li>
 
     <li data-ng-repeat="item in value| orderBy : 'date'">
 
