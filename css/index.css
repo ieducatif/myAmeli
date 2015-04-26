@@ -79,6 +79,13 @@ select {
   padding: 7px;
   font-size: 14px;
   color: deeppink;
+  transition: border-color 0.1s linear;
+  -webkit-transition: border-color 0.1s linear;
+  -moz-transition: border-color 0.1s linear;
+}
+input:focus,
+select:focus {
+  border-color: deepskyblue;
 }
 textarea {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans serif;
@@ -248,9 +255,9 @@ textarea {
   -moz-transition: all 0.1s linear;
 }
 .list-rdv li a:active {
-  transform: scale(1.05);
-  -webkit-transform: scale(1.05);
-  -moz-transform: scale(1.05);
+  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+  -moz-transform: scale(1.03);
 }
 .list-rdv li a .header {
   padding: 15px;
@@ -623,6 +630,10 @@ textarea {
 .popup .content .date select {
   display: inline-block;
   width: auto;
+}
+.popup .content .date select:after {
+  display: inline-block;
+  content: "/";
 }
 .popup .footer {
   text-align: center;

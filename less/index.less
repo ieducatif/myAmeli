@@ -157,6 +157,11 @@ select{
     padding:7px;
     font-size:14px;
     color:@rose;
+    .transition(border-color 0.1s linear);
+
+    &:focus{
+        border-color: @bleu;
+    }
 }
 textarea{
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans serif;
@@ -315,7 +320,7 @@ textarea{
             .transition(all 0.1s linear);
 
             &:active{
-                .transform(scale(1.05));
+                .transform(scale(1.03));
             }
 
             .header{
@@ -696,6 +701,11 @@ textarea{
             select{
                 display: inline-block;
                 width: auto;
+
+                &:after{
+                    display: inline-block;
+                    content: "/";
+                }
             }
         }
     }

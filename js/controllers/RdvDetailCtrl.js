@@ -42,7 +42,7 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                 "class" : "",
                 "boutons" : {
                     "confirm" : {
-                        "titre" : "Valider",
+                        "titre" : "Reporter",
                         "action" : "confirm()"
                     },
                     "cancel" : {
@@ -208,11 +208,11 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                 "class" : "success",
                 "boutons" : {
                     "confirm" : {
-                        "titre" : "Oui",
+                        "titre" : "Dupliquer",
                         "action" : "confirm()"
                     },
                     "cancel" : {
-                        "titre" : "Non",
+                        "titre" : "Annuler",
                         "action" : "cancel()"
                     }
                 }
@@ -260,11 +260,11 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                 "class" : "",
                 "boutons" : {
                     "confirm" : {
-                        "titre" : "Oui",
+                        "titre" : "Archiver",
                         "action" : "confirm()"
                     },
                     "cancel" : {
-                        "titre" : "Non",
+                        "titre" : "Annuler",
                         "action" : "cancel()"
                     }
                 }
@@ -316,11 +316,11 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                 "class" : "danger",
                 "boutons" : {
                     "confirm" : {
-                        "titre" : "Oui",
+                        "titre" : "Supprimer",
                         "action" : "confirm()"
                     },
                     "cancel" : {
-                        "titre" : "Non",
+                        "titre" : "Annuler",
                         "action" : "cancel()"
                     }
                 }

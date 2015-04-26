@@ -38,6 +38,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
 
                 /*
                  * Depuis REST
+                 * A FAIRE : URL de l'API distante
                  */
                 var resource = $resource('datas/data.json', {}, {
                     query : {
@@ -102,7 +103,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
                  */
                 angular.forEach(data, function (item){
 
-                    if(item.id == $routeParams.id){
+                    if(item.id === parseInt($routeParams.id, 0)){
 
                         result = item;
                     }
@@ -124,7 +125,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
 
                 angular.forEach(data, function (item){
 
-                    if(item.id != $routeParams.id){
+                    if(item.id !== parseInt($routeParams.id,0)){
 
                         arrData.push(item);
                     }
@@ -149,7 +150,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', 'localStorageS
 
                 angular.forEach(data, function (item){
 
-                    if(item.id == $routeParams.id){
+                    if(item.id === parseInt($routeParams.id)){
 
                         angular.forEach(params, function (value, param){
 
