@@ -158,6 +158,79 @@ textarea {
   max-width: 720px;
   margin: auto;
 }
+/* Home */
+.home {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background-color: deepskyblue;
+  background-image: url(../img/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+}
+.home .connexion {
+  position: fixed;
+  width: 50%;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  background-color: #fff;
+  padding: 3%;
+  border-top: solid 5px deepskyblue;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+}
+@media all and (max-width: 640px) {
+  .home .connexion {
+    width: 80%;
+    left: 10%;
+    right: 10%;
+  }
+}
+.home .connexion:after {
+  display: block;
+  float: none;
+  clear: both;
+  height: 0;
+  content: "";
+  visibility: hidden;
+}
+.home .connexion h1 {
+  display: inline-block;
+  display: none;
+  color: #fff;
+  background-color: deepskyblue;
+  margin-bottom: 5%;
+  padding: 10px 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.home .connexion .btn {
+  float: right;
+  background-color: deeppink;
+  border-color: deeppink;
+  color: #fff;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
+.home .brand {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+}
+.home .brand h1 {
+  font-size: 30px;
+  padding: 10%;
+}
 /* list-menu : filtre une liste */
 .list-menu {
   overflow: hidden;

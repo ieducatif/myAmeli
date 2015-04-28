@@ -1,7 +1,7 @@
 <!--
 Filtre rapide
 -->
-<ul class="list-menu">
+<ul class="list-menu animated bounceInDown">
     <li data-ng-repeat="menu in menus" data-ng-click="selectItem($index)" data-ng-class="{active: $index === selectedIndex}">
         <a href="{{menu.url}}">
             <img data-ng-src="{{menu.image}}">
@@ -12,7 +12,7 @@ Filtre rapide
 <!--
 Liste des RDV
 -->
-<ul class="list-rdv" data-ng-repeat="(date, value) in items | filter : query | groupBy :'dateJour'">
+<ul class="list-rdv animated bounceInDown" data-ng-repeat="(date, value) in items | filter : query | groupBy :'dateJour'">
 
     <li class="date">{{date|date:'dd/MM/yyyy'}}</li>
 

@@ -236,6 +236,74 @@ textarea{
     margin:auto;
 }
 
+/* Home */
+.home{
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    background-color: @bleu;
+    background-image: url(../img/background.jpg);
+    background-repeat:no-repeat;
+    background-position:center bottom;
+    background-size:cover;
+
+    .connexion{
+        position:fixed;
+        width:50%;
+        left:25%;
+        right:25%;
+        top:25%;
+        background-color: #fff;
+        padding: 3%;
+		border-top:solid 5px @bleu;
+        .box-shadow(3px 3px 5px);
+
+        @media all and (max-width:640px){
+            width : 80%;
+            left:10%;
+            right:10%;
+        }
+
+        &:after{
+            .clearfix();
+        }
+
+        h1{
+            display: inline-block;
+			display:none;
+            color:#fff;
+            background-color: @bleu;
+            margin-bottom: 5%;
+            padding: 10px 20px;
+            .text-shadow(1px 1px 2px);
+        }
+
+        .btn{
+            float:right;
+            background-color: @rose;
+            border-color: @rose;
+            color:#fff;
+            .border-radius(0);
+        }
+    }
+
+    .brand{
+        position:absolute;
+        z-index: 1;
+        left: 0;
+        bottom:0;
+        color:#fff;
+
+        h1{
+            font-size: 30px;
+            padding: 10%;
+        }
+    }
+}
+
 /* list-menu : filtre une liste */
 .list-menu{
     overflow: hidden;

@@ -1,0 +1,26 @@
+<!--
+Home : page d'accueil
+-->
+<div class="home">
+
+	<div class="connexion animated bounceInDown">
+
+		<h1>Bienvenue dans le futur</h1>
+
+		<form data-ng-submit="submit()">
+
+			<input type="text" data-ng-model="nir" name="nir" placeholder="Numéro de SS" data-ng-value="" pattern="[1|2|6|7|8]{1}[0-9]{12}" required="true"/>
+
+			<input type="password" data-ng-model="password" name="password" placeholder="Mot de passe" data-ng-value="" required="true"/>
+
+			<button class="btn" type="submit">Connexion</button>
+
+		</form>
+
+	</div>
+
+	<div class="brand animated bounceInDown">
+		<h1>myAmeli</h1>
+	</div>
+
+</div>

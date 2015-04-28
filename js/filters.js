@@ -2,7 +2,6 @@
  * Regrouper les filtres dans ce fichier
  */
 
-
 /*
  * formaZero : ce filtre permet de définier le format d'un nombre. Il permet de
  * forcer un nombre sur 2 caractères par ex. en ajoutant des zéros

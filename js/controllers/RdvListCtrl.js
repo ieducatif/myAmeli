@@ -1,13 +1,13 @@
 /*
  * ListCtrl : Liste tous les évènements (RDV, campagne de communication etc...)
  */
-Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data',
-    function ($scope, $filter, $window, Data){
+Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data', 'Notification',
+    function ($scope, $filter, $window, Data, Notification){
 
         /*
          * @items : objet qui contient tous les évènements récupérées depuis le service Data
          */
-        $scope.items = Data.getRdvList();
+        $scope.items = Data.getRdvList({forceUpdate:true});
 
         /*
          * @menus : menu qui permet de filtrer rapidement les évènements. Charge {{query}}.

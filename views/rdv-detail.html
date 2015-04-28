@@ -47,9 +47,9 @@ Etat et détail du remboursement
         <a data-ng-href="https://www.google.fr/maps/dir/ma+position/{{item.adresse}}" target="_blank" class="itineraire">Itinéraire</a>
 
         <!--
-        ngMap
+        ngMap : A FAIRE : quel est l'intérêt d'avoir une carte ici ?
         -->
-        <map class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
+        <map data-ng-hide="true" class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
 
         <blockquote class="notes">
             <h3>Notes</h3>

@@ -151,7 +151,7 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                 var newTimestamp = new Date(newDate).getTime();
 
                 /*
-                 * newTimestamJour sert pour le regroupement par date
+                 * @newTimestamJour sert pour le regroupement par date
                  */
                 var newDateJour = $filter('date')(newTimestamp, "MM/dd/yyyy");
 
@@ -338,8 +338,11 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                  * 3 - Rediriger vers la page d'accueil
                  */
                 Data.deleteRdv();
-
-                $window.location.hash = '#/';
+				
+				/*
+				* Redirection vers la liste des RDV
+				*/
+                $window.location.hash = '#/rdv-list';
             };
 
             /*

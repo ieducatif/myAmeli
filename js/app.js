@@ -24,6 +24,10 @@ var Filters = angular.module('Filters', []);
 app.config(['$routeProvider', function ($routeProvider){
 
         $routeProvider.
+            when('/home', {
+                templateUrl : 'views/home.html',
+                controller : 'HomeCtrl'
+            }).
             when('/rdv-list', {
                 templateUrl : 'views/rdv-list.html',
                 controller : 'RdvListCtrl'
@@ -49,6 +53,6 @@ app.config(['$routeProvider', function ($routeProvider){
                 controller : 'SettingsCtrl'
             }).
             otherwise({
-                redirectTo : '/rdv-list'
+                redirectTo : '/home'
             });
     }]);

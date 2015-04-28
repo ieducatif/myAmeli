@@ -50,6 +50,6 @@ app.directive('popup', function (){
     return {
         restrict : 'E',
         translude : true,
-        template : '<div ng-include="popUrl"></div>'
+        template : '<div data-ng-include="popUrl"></div>'
     };
 });
