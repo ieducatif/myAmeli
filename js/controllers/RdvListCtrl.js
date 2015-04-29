@@ -7,17 +7,17 @@ Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data', '
         /*
          * @items : objet qui contient tous les évènements récupérées depuis le service Data
          */
-        $scope.items = Data.getRdvList({forceUpdate:true});
+        $scope.items = Data.getRdvList({forceUpdate : false});
 
         /*
          * @menus : menu qui permet de filtrer rapidement les évènements. Charge {{query}}.
          */
         $scope.menus = [
             {
-                "titre" : "Tout",
+                "titre" : "Tout afficher",
                 "url" : "#/rdv-list",
                 "image" : "img/menu.svg",
-                "query" : this
+                "query" : ""
             },
             {
                 "titre" : "En attente",
@@ -26,7 +26,7 @@ Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data', '
                 "query" : false
             },
             {
-                "titre" : "Terminés",
+                "titre" : "Remboursés",
                 "url" : "#/rdv-list",
                 "image" : "img/check-green.svg",
                 "query" : true

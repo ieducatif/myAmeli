@@ -190,7 +190,7 @@ textarea{
     li{
         display: block;
         float: left;
-        width: calc(100%/3);
+        width: calc(~"100%/3");
         text-align: center;
         border-bottom: solid 3px transparent;
         .transition(all 0.2s ease-in);
@@ -239,11 +239,14 @@ textarea{
 /* Home */
 .home{
     position:fixed;
-    width: 100%;
-    height: 100%;
+    z-index: 2;
     left: 0;
     top: 0;
-    z-index: 2;
+    right:0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+
     background-color: @bleu;
     background-image: url(../img/background.jpg);
     background-repeat:no-repeat;
@@ -251,20 +254,19 @@ textarea{
     background-size:cover;
 
     .connexion{
-        position:fixed;
+        position: fixed;
+        top:20%;
+        left: 25%;
+        right: 25%;
         width:50%;
-        left:25%;
-        right:25%;
-        top:25%;
-        background-color: #fff;
+        margin: 0 auto;
         padding: 3%;
-		border-top:solid 5px @bleu;
+        background-color: #fff;
+        border-top:solid 5px @bleu;
         .box-shadow(3px 3px 5px);
 
         @media all and (max-width:640px){
             width : 80%;
-            left:10%;
-            right:10%;
         }
 
         &:after{
@@ -273,7 +275,7 @@ textarea{
 
         h1{
             display: inline-block;
-			display:none;
+            display:none;
             color:#fff;
             background-color: @bleu;
             margin-bottom: 5%;
@@ -317,7 +319,7 @@ textarea{
     li{
         display: block;
         float:left;
-        width: calc(100% / 3);
+        width: calc(~"100%/3");
         text-align: center;
 
         &:nth-child(2){
@@ -359,7 +361,7 @@ textarea{
         list-style: none;
         margin:auto;
         margin-bottom: 1%;
-        width: calc(100% - 2%);
+        width: calc(~"100% - 2%");
 
         &:after{
             .clearfix();
@@ -381,7 +383,7 @@ textarea{
         a{
             display: block;
             float:right;
-            width: calc(~'100% - 48px - 2%'); // max - largeur de l'avatar - la marge
+            width: calc(~"100% - 48px - 2%"); // max - largeur de l'avatar - la marge
             background-color: #fff;
             border:solid 1px @gris;
             .box-shadow(2px 2px 3px);
@@ -454,7 +456,7 @@ textarea{
 .detail-rdv{
     overflow: hidden;
     background-color: white;
-    width:calc(100% - 1.5%);
+    width:calc(~"100% - 1.5%");
     margin: auto;
     margin-bottom: 10px;
     border:solid 1px @gris;
@@ -527,7 +529,7 @@ textarea{
             .montant,
             .message{
                 float:left;
-                width: calc(100% / 3.3);
+                width: calc(~"100% / 3.3");
                 text-align: center;
                 line-height:21px;
                 vertical-align:middle;
@@ -649,7 +651,7 @@ textarea{
             background-color: transparent;
             border:none;
             padding: 15px 0;
-            width: calc(100% / 3);
+            width: calc(~"100% / 3");
             .border-radius(0);
             .box-shadow(0 0 0);
             .transition(background-color 0.1s linear);
@@ -683,7 +685,7 @@ textarea{
 .search-ps{
     overflow: hidden;
     background-color: white;
-    width:calc(100% - 1.5%);
+    width:calc(~"100% - 1.5%");
     margin: auto;
     margin-bottom: 10px;
     border:solid 1px @gris;
@@ -740,11 +742,13 @@ textarea{
     /* Masque transparent */
     &-masque{
         position:fixed;
+        z-index: 2;
         width: 100%;
         height: 100%;
         left: 0;
         top: 0;
-        z-index: 2;
+        bottom:0;
+        right:0;
         background-color: rgba(0,0,0,0.5);
     }
 
@@ -889,7 +893,7 @@ input[type=reset]{
         position: fixed;
         z-index: 1;
         bottom: 25px;
-        right: calc(100% / 5.5);
+        right: calc(~"100% / 5.5");
         background-color: @rose;
         width: 60px;
         height: 60px;

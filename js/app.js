@@ -56,3 +56,13 @@ app.config(['$routeProvider', function ($routeProvider){
                 redirectTo : '/home'
             });
     }]);
+
+/*
+ * Configuration du service localstorageservice
+ */
+app.config(function (localStorageServiceProvider){
+    localStorageServiceProvider
+        .setPrefix('myAmeli')
+        .setStorageType('localStorage')
+        .setNotify(true, true);
+});
