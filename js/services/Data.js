@@ -6,7 +6,6 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
 
         /*
          * Test pour résoudre le problème des navigateurs non compatibles avec localStorage
-         * GLOBALS
          * @DATA : stocke les données des RDV
          * @DATA_DATE : date de dernière mise à jour des données
          */
@@ -39,14 +38,15 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
              * A FAIRE : passer les paramètres
              *
              * @params : {
-             * 		forceUpdate : booleen, force la mise à jour depuis le serveur
-             *
+             *  forceUpdate : force la mise à jour depuis le serveur,
+             *  notification : active les notifications,
+             *  user : NIR de l'utilisateur
              * }
              */
             getRdvList : function (params){
 
                 /*
-                 * Depuis localStorage si @params.forceUpdate = null
+                 * Depuis localStorage si @params.forceUpdate = false
                  */
                 if(request.statusData() === true && params.forceUpdate === false){
 
@@ -58,13 +58,15 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                 $log.info('Données chargées depuis le serveur. params.forceUpdate = ', params.forceUpdate);
 
                 /*
-                 * Depuis REST
+                 * REST API
                  * A FAIRE : URL de l'API distante
                  */
-                var resource = $resource('datas/data.json', {}, {
+                var urlData = '../datas/data.json';
+
+                var resource = $resource(urlData, {}, {
                     query : {
                         method : 'GET',
-                        params : {},
+                        params : {user : params.user},
                         isArray : true,
                         responseType : 'json',
                         transformResponse : function (data){
@@ -111,7 +113,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                                  */
                                 if(dateLastData !== null){
 
-                                    if(item.remboursement.date > dateLastData && item.etat === true && compteurNotifications < 3){
+                                    if(params.notification === true && item.remboursement.date > dateLastData && item.etat === true && compteurNotifications < 3){
 
                                         Notification.send({
                                             id : item.id,
@@ -247,6 +249,8 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                              * Met l'élement avec la nouvelle valeur
                              */
                             item[param] = value;
+
+                            $log.log(value);
                         });
                     }
 
@@ -269,8 +273,8 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
             /*
              * Vérfie le login et mot de passe
              * @params : {
-             *		nir : numéro SS
-             *		password : mot de passe Ameli
+             *  nir : numéro SS
+             *	password : mot de passe Ameli
              *	}
              *
              *	A FAIRE :
@@ -283,5 +287,3 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
 
         return request;
     }]);
-
-

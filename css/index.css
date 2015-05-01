@@ -176,7 +176,7 @@ textarea {
 }
 .home .connexion {
   position: fixed;
-  top: 20%;
+  top: 25%;
   left: 25%;
   right: 25%;
   width: 50%;
@@ -191,6 +191,8 @@ textarea {
 @media all and (max-width: 640px) {
   .home .connexion {
     width: 80%;
+    left: 10%;
+    right: 10%;
   }
 }
 .home .connexion:after {
@@ -646,6 +648,51 @@ textarea {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
 }
+/* Settings */
+.settings {
+  background-color: white;
+  padding: 0;
+  margin-top: -10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+}
+.settings li {
+  border-bottom: solid 1px whitesmoke;
+}
+.settings li:after {
+  display: block;
+  float: none;
+  clear: both;
+  height: 0;
+  content: "";
+  visibility: hidden;
+}
+.settings li:hover > *,
+.settings li:active > * {
+  background-color: #fdfdfd;
+  color: deeppink;
+}
+.settings li a {
+  display: block;
+  padding: 3%;
+  vertical-align: middle;
+}
+.settings li label,
+.settings li input {
+  display: inline-block;
+  width: auto;
+  margin: 3%;
+  /* trick */
+  cursor: pointer;
+}
+.settings li label {
+  float: left;
+  color: #0099cc;
+}
+.settings li input {
+  float: right;
+}
 /* Popups */
 .popup {
   position: fixed;
@@ -701,7 +748,8 @@ textarea {
 }
 .popup .content .date {
   color: #a9a9a9;
-  text-align: center;
+  text-align: left;
+  margin-left: 10%;
 }
 .popup .content .date select {
   display: inline-block;

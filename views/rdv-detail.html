@@ -17,7 +17,7 @@
     <div class="content">
 
         <!--
-Etat et détail du remboursement
+        Etat et détail du remboursement
         -->
         <div class="remboursement {{item.etat}}">
 
@@ -48,9 +48,10 @@ Etat et détail du remboursement
 
         <!--
         ngMap : A FAIRE : quel est l'intérêt d'avoir une carte ici ?
-        -->
-        <map data-ng-hide="true" class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
 
+        <map data-ng-hide="true" class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
+        -->
+        
         <blockquote class="notes">
             <h3>Notes</h3>
             <textarea data-ng-model="item.notes">{{item.notes}}</textarea>
@@ -82,7 +83,7 @@ Etat et détail du remboursement
 <!--
 Reçoit les popup : voir directives.js
 -->
-<popup ng-translude></popup>
+<popup data-ng-translude></popup>
 
 <script>
     /*

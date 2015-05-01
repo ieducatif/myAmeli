@@ -7,7 +7,11 @@ Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data', '
         /*
          * @items : objet qui contient tous les évènements récupérées depuis le service Data
          */
-        $scope.items = Data.getRdvList({forceUpdate : false});
+        $scope.items = Data.getRdvList({
+            forceUpdate : false,
+            notification : false,
+            user : 1820375114166
+        });
 
         /*
          * @menus : menu qui permet de filtrer rapidement les évènements. Charge {{query}}.

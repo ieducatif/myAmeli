@@ -24,7 +24,8 @@ Services.factory('Notification', ['$resource', '$filter', 'localStorageService',
 
                 var isIPhone = navigateur.indexOf("iphone") > -1;
 
-                if(isAndroid || isIPhone){
+                //if(isAndroid || isIPhone){
+                if(isIPhone){
 
                     $log.warn("Smartphone : " + navigateur);
 
@@ -94,6 +95,8 @@ Services.factory('Notification', ['$resource', '$filter', 'localStorageService',
 
                     instance.onshow = function (){
 
+                        $log.log(this);
+
                         /*
                          * Masquer les notifications après un délai de 5 secondes
                          */
@@ -101,7 +104,7 @@ Services.factory('Notification', ['$resource', '$filter', 'localStorageService',
                             /*
                              * A FAIRE :
                              */
-                        }, 5000);
+                        }, 2000);
                     };
 
                     instance.onclose = function (){

@@ -255,7 +255,7 @@ textarea{
 
     .connexion{
         position: fixed;
-        top:20%;
+        top:25%;
         left: 25%;
         right: 25%;
         width:50%;
@@ -267,6 +267,8 @@ textarea{
 
         @media all and (max-width:640px){
             width : 80%;
+            left: 10%;
+            right: 10%;
         }
 
         &:after{
@@ -718,6 +720,49 @@ textarea{
     }
 }
 
+/* Settings */
+.settings{
+    background-color: white;
+    padding:0;
+    margin-top:-10px;
+    .box-shadow(3px 3px 5px);
+
+    li{
+        border-bottom:solid 1px @gris-clair;
+
+        &:after{
+            .clearfix();
+        }
+
+        &:hover > *,
+        &:active > *{
+            background-color: lighten(@gris-clair, 3%);
+            color:@rose;
+        }
+
+        a{
+            display: block;
+            padding:3%;
+            vertical-align:middle;
+        }
+
+        label,
+        input{
+            display: inline-block;
+            width: auto;
+            margin: 3%; /* trick */
+            cursor: pointer;
+        }
+        label{
+            float:left;
+            color:@bleu-fonce;
+        }
+        input{
+            float: right;
+        }
+    }
+}
+
 
 /* Popups */
 .popup{
@@ -768,7 +813,8 @@ textarea{
 
         .date{
             color:@gris-fonce;
-            text-align:center;
+            text-align:left;
+            margin-left:10%;
 
             select{
                 display: inline-block;
