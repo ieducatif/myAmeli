@@ -1,8 +1,8 @@
 /*
  * ListCtrl : Liste tous les évènements (RDV, campagne de communication etc...)
  */
-Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data', 'Notification',
-    function ($scope, $filter, $window, Data, Notification){
+Controllers.controller('RdvListCtrl', ['$scope', '$window', '$log', 'Data',
+    function ($scope, $window, $log, Data){
 
         /*
          * @items : objet qui contient tous les évènements récupérées depuis le service Data
@@ -12,6 +12,15 @@ Controllers.controller('RdvListCtrl', ['$scope', '$filter', '$window', 'Data', '
             notification : false,
             user : 1820375114166
         });
+
+        /*
+         * Si c'est la première connexion rediriger vers le tutoriel
+         * A FAIRE :
+         */
+        if($scope.items.length === 0){
+
+            //$window.location.hash = '#/tutoriel';
+        }
 
         /*
          * @menus : menu qui permet de filtrer rapidement les évènements. Charge {{query}}.
