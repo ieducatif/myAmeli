@@ -97,7 +97,6 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                                  */
                                 var date = $filter('date')(item.date, "dd/MM/yyyy").split('/');
 
-
                                 var timestamp = new Date(date[1] + '/' + date[0] + '/' + date[2]).getTime();
 
                                 item.dateJour = timestamp;
@@ -280,6 +279,65 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
              *	A FAIRE :
              */
             loginUser : function (params){
+
+                if(localStorageService.isSupported){
+
+                    localStorageService.set("user", params.nir);
+                }
+
+                return true;
+            },
+            /*
+             * Retourne le NIR
+             */
+            getUser : function (){
+
+                if(localStorageService.isSupported){
+
+                    if(localStorageService.get("user") !== null){
+
+                        return localStorageService.get("user");
+                    }else{
+
+                        return false;
+                    }
+                }
+
+                return false;
+            },
+            /*
+             * Est-ce la première visite ?
+             */
+            isFirstVisit : function (){
+
+                if(localStorageService.isSupported){
+
+                    if(localStorageService.get("is-first-visit") !== null){
+
+                        return false;
+                    }else{
+
+                        localStorageService.set("is-first-visit", false);
+
+                        return true;
+                    }
+                }
+
+                return true;
+            },
+            /*
+             * Réinitialise l'application
+             */
+            clearCache : function (){
+
+                if(localStorageService.isSupported){
+
+                    localStorageService.clearAll();
+
+                    DATA = [];
+
+                    DATA_DATE = null;
+                }
 
                 return true;
             }

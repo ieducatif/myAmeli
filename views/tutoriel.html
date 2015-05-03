@@ -1,0 +1,17 @@
+<div class="tutoriel" ng-model="etape">
+
+    <div data-ng-repeat="item in items" data-ng-show="item.id===etape" class="panel">
+
+        <h1 class="animated fadeIn">{{item.titre}}</h1>
+
+        <p class="animated fadeIn">
+            {{item.message}}
+        </p>
+
+        <div>
+            <a data-ng-href="{{item.bouton.href}}" data-ng-click="suivant()"  class="btn">{{item.bouton.titre}}</a>
+        </div>
+
+    </div>
+
+</div>

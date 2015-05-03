@@ -248,21 +248,20 @@ textarea{
     height: 100%;
 
     background-color: @bleu;
-    background-image: url(../img/background.jpg);
-    background-repeat:no-repeat;
-    background-position:center bottom;
-    background-size:cover;
+    /*    background-image: url(../img/background.jpg);
+        background-repeat:no-repeat;
+        background-position:center bottom;
+        background-size:cover;*/
 
     .connexion{
         position: fixed;
         top:25%;
-        left: 25%;
-        right: 25%;
-        width:50%;
+        left: 30%;
+        right: 30%;
+        width:40%;
         margin: 0 auto;
         padding: 3%;
         background-color: #fff;
-        border-top:solid 5px @bleu;
         .box-shadow(3px 3px 5px);
 
         @media all and (max-width:640px){
@@ -285,11 +284,16 @@ textarea{
             .text-shadow(1px 1px 2px);
         }
 
+        input{
+            font-size: 16px;
+        }
+
         .btn{
             float:right;
             background-color: @rose;
-            border-color: @rose;
+            border: none;
             color:#fff;
+            padding: 10px 20px;
             .border-radius(0);
         }
     }
@@ -302,7 +306,7 @@ textarea{
         color:#fff;
 
         h1{
-            font-size: 30px;
+            font-size: 24px;
             padding: 10%;
         }
     }
@@ -371,9 +375,9 @@ textarea{
 
         .avatar{
             float:left;
-            width:48px;
-            height:48px;
-            margin-top:5%;
+            width:50px;
+            height:50px;
+            margin-top:4%;
             margin-right:2%;
             background-color:@gris-clair;
             background-repeat:no-repeat;
@@ -385,7 +389,7 @@ textarea{
         a{
             display: block;
             float:right;
-            width: calc(~"100% - 48px - 2%"); // max - largeur de l'avatar - la marge
+            width: calc(~"100% - 50px - 2%"); // max - largeur de l'avatar - la marge
             background-color: #fff;
             border:solid 1px @gris;
             .box-shadow(2px 2px 3px);
@@ -725,7 +729,6 @@ textarea{
     background-color: white;
     padding:0;
     margin-top:-10px;
-    .box-shadow(3px 3px 5px);
 
     li{
         border-bottom:solid 1px @gris-clair;
@@ -735,14 +738,14 @@ textarea{
         }
 
         &:hover > *,
-        &:active > *{
+            &:active > *{
             background-color: lighten(@gris-clair, 3%);
             color:@rose;
         }
 
         a{
             display: block;
-            padding:3%;
+            padding:6% 3%;
             vertical-align:middle;
         }
 
@@ -750,7 +753,7 @@ textarea{
         input{
             display: inline-block;
             width: auto;
-            margin: 3%; /* trick */
+            margin: 6% 3%; /* trick */
             cursor: pointer;
         }
         label{
@@ -763,6 +766,73 @@ textarea{
     }
 }
 
+/* Tutoriel */
+.tutoriel{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: @bleu;
+    /*    background-image: url(../img/background.jpg);
+        background-repeat:no-repeat;
+        background-position:center bottom;
+        background-size:cover;*/
+
+    color:white;
+    padding:5%;
+    .box-shadow(3px 3px 5px);
+
+    .panel{
+        position:fixed;
+        top:20%;
+        left:15%;
+        right: 15%;
+        width:70%;
+        margin:0 auto;
+
+        @media all and(max-width:480px){
+            width:90%;
+            left:5%;
+            right:5%;
+        }
+
+        h1{
+            font-size: 30px;
+            margin-bottom: 10%;
+            word-wrap:break-word;
+            .text-shadow(1px 1px 2px);
+        }
+
+        p{
+            font-size: 24px;
+            line-height: 40px;
+            margin-bottom: 10%;
+            text-align: left;
+            .text-shadow(1px 1px 2px);
+        }
+
+        div{
+            &:after{
+                .clearfix();
+            }
+
+            .btn{
+                position: fixed;
+                bottom:5%;
+                right:5%;
+                background-color: rgba(255,255,255,0.5);
+                border:none;
+                color:white;
+                .border-radius(0);
+                .box-shadow(0 0 0);
+            }
+        }
+    }
+}
 
 /* Popups */
 .popup{
@@ -981,6 +1051,18 @@ input[type=reset]{
     animation-name: bounceInDown;
 }
 
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.flipInY {
+    -webkit-backface-visibility: visible !important;
+    -webkit-animation-name: flipInY;
+    backface-visibility: visible !important;
+    animation-name: flipInY;
+}
+
 @-webkit-keyframes bounceInDown {
     0% {
         opacity: 0;
@@ -1014,3 +1096,46 @@ input[type=reset]{
         transform: translateY(0);
     }
 }
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@-webkit-keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    40% {
+        -webkit-transform: perspective(400px) rotateY(-10deg);
+    }
+    70% {
+        -webkit-transform: perspective(400px) rotateY(10deg);
+    }
+    100% {
+        -webkit-transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+@keyframes flipInY {
+    0% {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotateY(-10deg);
+    }
+    70% {
+        transform: perspective(400px) rotateY(10deg);
+    }
+    100% {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+

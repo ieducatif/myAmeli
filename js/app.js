@@ -27,10 +27,11 @@ app.config(['$routeProvider', function ($routeProvider){
             when('/home', {
                 templateUrl : 'views/home.html',
                 controller : 'HomeCtrl'
-            }).when('/tutoriel', {
-            templateUrl : 'views/tutoriel.html',
-            controller : 'TutorielCtrl'
-        }).
+            })
+            .when('/tutoriel', {
+                templateUrl : 'views/tutoriel.html',
+                controller : 'TutorielCtrl'
+            }).
             when('/rdv-list', {
                 templateUrl : 'views/rdv-list.html',
                 controller : 'RdvListCtrl'

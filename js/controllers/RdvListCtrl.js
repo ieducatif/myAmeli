@@ -5,25 +5,37 @@ Controllers.controller('RdvListCtrl', ['$scope', '$window', '$log', 'Data',
     function ($scope, $window, $log, Data){
 
         /*
-         * @items : objet qui contient tous les évènements récupérées depuis le service Data
+         * Si l'utilisateur n'est pas loggué on redirige vers la page de connexion
          */
-        $scope.items = Data.getRdvList({
-            forceUpdate : false,
-            notification : false,
-            user : 1820375114166
-        });
+        if(Data.getUser() === false){
 
-        /*
-         * Si c'est la première connexion rediriger vers le tutoriel
-         * A FAIRE :
-         */
-        if($scope.items.length === 0){
+            $window.location.hash = '#/home';
 
-            //$window.location.hash = '#/tutoriel';
+            return;
         }
 
         /*
-         * @menus : menu qui permet de filtrer rapidement les évènements. Charge {{query}}.
+         * Si c'est la première visite on redirige vers le tutoriel
+         */
+        if(Data.isFirstVisit() === true ){
+
+            $window.location.hash = '#/tutoriel';
+
+            return;
+        }
+
+        /*
+         * @items : objet qui contient tous les évènements récupérés depuis le service Data
+         */
+        $scope.items = Data.getRdvList({
+            forceUpdate : false,
+            notification : true,
+            user : Data.getUser()
+        });
+
+        /*
+         * @menus : menu qui permet de filtrer rapidement les évènements.
+         * Charge {{query}}.
          */
         $scope.menus = [
             {
@@ -52,15 +64,13 @@ Controllers.controller('RdvListCtrl', ['$scope', '$window', '$log', 'Data',
         $scope.selectedIndex = 0;
 
         /*
-         * selectItem(index) : Quand on clique sur un élement du menu. Met à jour la requête {{query}}
+         * selectItem(index) : Quand on clique sur un élement du menu.
+         * Met à jour la requête {{query}}
          */
         $scope.selectItem = function (index){
 
             $scope.selectedIndex = index;
 
-            /*
-             * Met à jour le filtre
-             */
             $scope.query = $scope.menus[$scope.selectedIndex].query;
         };
 

@@ -17,7 +17,7 @@
     "beneficiaire": {
       "nom": "Morales",
       "prenom": "Massey",
-      "avatar": "http://pickaface.net/avatar/clickspays54c8a65b8c7b1.png",
+      "avatar": "img/avatars/homme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379232,
       "rang": 1
@@ -41,7 +41,7 @@
     "beneficiaire": {
       "nom": "Gamble",
       "prenom": "Henrietta",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379232,
       "rang": 1
@@ -65,7 +65,7 @@
     "beneficiaire": {
       "nom": "Ford",
       "prenom": "Crystal",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "A",
       "dateNaissance": 1430139379232,
       "rang": 2
@@ -89,7 +89,7 @@
     "beneficiaire": {
       "nom": "Trujillo",
       "prenom": "Mccoy",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "A",
       "dateNaissance": 1430139379233,
       "rang": 1
@@ -113,7 +113,7 @@
     "beneficiaire": {
       "nom": "Mendoza",
       "prenom": "Moss",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "A",
       "dateNaissance": 1430139379233,
       "rang": 1
@@ -137,7 +137,7 @@
     "beneficiaire": {
       "nom": "Sparks",
       "prenom": "Katrina",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379234,
       "rang": 1
@@ -161,7 +161,7 @@
     "beneficiaire": {
       "nom": "Hayden",
       "prenom": "Angelique",
-      "avatar": "http://pickaface.net/avatar/clickspays54c8a65b8c7b1.png",
+      "avatar": "img/avatars/homme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379234,
       "rang": 1
@@ -185,7 +185,7 @@
     "beneficiaire": {
       "nom": "Potts",
       "prenom": "Maryann",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379234,
       "rang": 2
@@ -209,7 +209,7 @@
     "beneficiaire": {
       "nom": "Spence",
       "prenom": "Freda",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379235,
       "rang": 2
@@ -233,7 +233,7 @@
     "beneficiaire": {
       "nom": "Hood",
       "prenom": "Brown",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "A",
       "dateNaissance": 1430139379235,
       "rang": 1
@@ -257,7 +257,7 @@
     "beneficiaire": {
       "nom": "Underwood",
       "prenom": "Eula",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "C",
       "dateNaissance": 1430139379236,
       "rang": 1
@@ -281,7 +281,7 @@
     "beneficiaire": {
       "nom": "Snow",
       "prenom": "Vincent",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379236,
       "rang": 2
@@ -305,7 +305,7 @@
     "beneficiaire": {
       "nom": "Cherry",
       "prenom": "Paul",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379236,
       "rang": 2
@@ -329,7 +329,7 @@
     "beneficiaire": {
       "nom": "Gray",
       "prenom": "Heidi",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379237,
       "rang": 2
@@ -353,7 +353,7 @@
     "beneficiaire": {
       "nom": "Stephenson",
       "prenom": "English",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "C",
       "dateNaissance": 1430139379237,
       "rang": 2
@@ -377,7 +377,7 @@
     "beneficiaire": {
       "nom": "Richard",
       "prenom": "Valarie",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "A",
       "dateNaissance": 1430139379238,
       "rang": 1
@@ -401,7 +401,7 @@
     "beneficiaire": {
       "nom": "Sutton",
       "prenom": "Hayes",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "C",
       "dateNaissance": 1430139379238,
       "rang": 1
@@ -425,7 +425,7 @@
     "beneficiaire": {
       "nom": "Davidson",
       "prenom": "Wiley",
-      "avatar": "http://pickaface.net/avatar/clickspays54c8a65b8c7b1.png",
+      "avatar": "img/avatars/homme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379238,
       "rang": 1
@@ -449,7 +449,7 @@
     "beneficiaire": {
       "nom": "Cook",
       "prenom": "Blair",
-      "avatar": "http://pickaface.net/avatar/clickspays54c8a65b8c7b1.png",
+      "avatar": "img/avatars/homme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379239,
       "rang": 2
@@ -473,7 +473,7 @@
     "beneficiaire": {
       "nom": "Wise",
       "prenom": "Lowe",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "E",
       "dateNaissance": 1430139379239,
       "rang": 2
@@ -497,7 +497,7 @@
     "beneficiaire": {
       "nom": "Ayala",
       "prenom": "Russo",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "C",
       "dateNaissance": 1430139379240,
       "rang": 2
@@ -521,7 +521,7 @@
     "beneficiaire": {
       "nom": "Clark",
       "prenom": "Lacey",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "A",
       "dateNaissance": 1430139379240,
       "rang": 2
@@ -545,7 +545,7 @@
     "beneficiaire": {
       "nom": "Greer",
       "prenom": "Houston",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "A",
       "dateNaissance": 1430139379241,
       "rang": 1
@@ -569,7 +569,7 @@
     "beneficiaire": {
       "nom": "Head",
       "prenom": "Lawanda",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "E",
       "dateNaissance": 1430139379241,
       "rang": 2
@@ -593,7 +593,7 @@
     "beneficiaire": {
       "nom": "Merrill",
       "prenom": "Olivia",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379241,
       "rang": 2
@@ -617,7 +617,7 @@
     "beneficiaire": {
       "nom": "Love",
       "prenom": "Long",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "C",
       "dateNaissance": 1430139379242,
       "rang": 1
@@ -641,7 +641,7 @@
     "beneficiaire": {
       "nom": "Dominguez",
       "prenom": "Alba",
-      "avatar": "http://pickaface.net/avatar/HermioneGranger53774f2af2beb.png",
+      "avatar": "img/avatars/femme-2.png",
       "qualite": "A",
       "dateNaissance": 1430139379242,
       "rang": 2
@@ -665,7 +665,7 @@
     "beneficiaire": {
       "nom": "Alvarez",
       "prenom": "Arline",
-      "avatar": "http://pickaface.net/avatar/chrisnp529faff90687d.png",
+      "avatar": "img/avatars/femme-1.png",
       "qualite": "A",
       "dateNaissance": 1430139379243,
       "rang": 2

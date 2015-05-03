@@ -8,9 +8,9 @@ Services.factory('Notification', ['$resource', '$filter', 'localStorageService',
             /*
              * Envoi une notification
              *	@params  = {
-             *		titre : titre de la notification
-             *		body : message
-             *		icon : url vers une image
+             *      titre : titre de la notification
+             *      body : message
+             *      icon : url vers une image
              *	}
              */
             send : function (params){
@@ -90,15 +90,16 @@ Services.factory('Notification', ['$resource', '$filter', 'localStorageService',
                         /*
                          * Redirection vers la page du détail du RDV
                          */
-                        $window.location.hash = '#/rdv-detail/' + params.id;
+                        if( params.test !== true) {
+
+                            $window.location.hash = '#/rdv-detail/' + params.id;
+                        }
                     };
 
                     instance.onshow = function (){
 
-                        $log.log(this);
-
                         /*
-                         * Masquer les notifications après un délai de 5 secondes
+                         * Masquer les notifications après un délai de 2 secondes
                          */
                         setTimeout(function (){
                             /*
@@ -115,12 +116,9 @@ Services.factory('Notification', ['$resource', '$filter', 'localStorageService',
 
                         $log.warn('Erreur sur la notification');
                     };
-
                 }
-
             }
         };
 
         return notification;
-
     }]);
