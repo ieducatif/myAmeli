@@ -10,6 +10,10 @@
 
 @rose : deeppink;
 
+@violet : purple;
+
+@orange : orange;
+
 @gris-clair : whitesmoke;
 @gris : darken(whitesmoke, 10%);
 @gris-fonce : darken(whitesmoke, 30%);
@@ -87,6 +91,9 @@
 
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
 
     outline:none;
 }
@@ -147,8 +154,8 @@ form{
 }
 input,
 select{
-    background-color:transparent;
     display:block;
+    background-color:transparent;
     width:100%;
     margin-bottom:15px;
     border:none;
@@ -163,6 +170,11 @@ select{
         border-color: @bleu;
     }
 }
+select{
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+}
 textarea{
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans serif;
     font-size: 14px;
@@ -173,6 +185,9 @@ textarea{
 /* header */
 .main-header{
     position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
     z-index: 1;
     width: 100%;
     padding: 0;
@@ -488,6 +503,11 @@ textarea{
             .border-radius(50px);
         }
 
+        .date,
+        .heure{
+            cursor:pointer;
+        }
+
         .date{
             float: left;
             width: 33%;
@@ -502,79 +522,97 @@ textarea{
             text-align: right;
         }
     }
+
+    /* Barre du statut et des détails du remboursement */
+    .remboursement{
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        width: 100%;
+        color:#fff;
+
+        &:after{
+            .clearfix();
+        }
+
+        &.false{
+            background-color: lighten(orange, 15%);
+            border-top:solid 1px lighten(orange, 10%);
+            border-bottom:solid 1px lighten(orange, 10%);
+        }
+
+        &.true{
+            background-color: lighten(yellowgreen, 15%);
+            border-top:solid 1px lighten(yellowgreen, 10%);
+            border-bottom:solid 1px lighten(yellowgreen, 10%);
+        }
+
+        .date,
+        .etat,
+        .montant,
+        .message,
+        .contact{
+            float:left;
+            width: calc(~"100% / 3");
+            text-align: center;
+            line-height:21px;
+            vertical-align:middle;
+            .text-overflow(ellipsis);
+        }
+
+        .contact{
+            text-align:right;
+            a{
+                display:inline-block;
+                margin-left:10%;
+
+                img{
+                    width: auto;
+                    height: 20px;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .etat{
+            text-align:left;
+
+            .true,
+            .false{
+                display: inline-block;
+                background-repeat: no-repeat;
+                background-position: center center;
+                width: 20px;
+                height: 20px;
+                vertical-align:middle;
+            }
+            .true{
+                background-image: url(../img/check-white.svg);
+            }
+            .false{
+                background-image: url(../img/schedule-white.svg);
+            }
+        }
+
+        .date{
+        }
+
+        .montant{
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* Affiché que si l'état est à false */
+        .message{
+            text-align:center;
+            font-weight:normal;
+        }
+    }
+
     .content{
         padding: 15px;
         padding-top:0;
 
-        /* Barre du statut et des détails du remboursement */
-        .remboursement{
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            margin-left: -15px;
-            width: calc(100% + 15px);
-            color:#fff;
 
-            &:after{
-                .clearfix();
-            }
-
-            &.false{
-                background-color: lighten(orange, 15%);
-                border-top:solid 1px lighten(orange, 10%);
-                border-bottom:solid 1px lighten(orange, 10%);
-            }
-
-            &.true{
-                background-color: lighten(yellowgreen, 15%);
-                border-top:solid 1px lighten(yellowgreen, 10%);
-                border-bottom:solid 1px lighten(yellowgreen, 10%);
-            }
-
-            .date,
-            .etat,
-            .montant,
-            .message{
-                float:left;
-                width: calc(~"100% / 3.3");
-                text-align: center;
-                line-height:21px;
-                vertical-align:middle;
-            }
-
-            .etat{
-                text-align:left;
-
-                .true,
-                .false{
-                    display: inline-block;
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    width: 20px;
-                    height: 20px;
-                    vertical-align:middle;
-                }
-                .true{
-                    background-image: url(../img/check-white.svg);
-                }
-                .false{
-                    background-image: url(../img/schedule-white.svg);
-                }
-            }
-
-            .date{
-            }
-
-            .montant{
-                text-align: right;
-                font-weight: bold;
-            }
-
-            /* Affiché que si l'état est à false */
-            .message{
-                text-align:center;
-                font-weight:normal;
-            }
-        }
 
         .titre{
             margin-bottom: 10px;
@@ -749,20 +787,19 @@ textarea{
             vertical-align:middle;
         }
 
-        label,
-        input{
-            display: inline-block;
-            width: auto;
-            margin: 6% 3%; /* trick */
-            cursor: pointer;
-        }
         label{
-            float:left;
+            display: block;
+            width: 100%;
+            padding: 6% 3%; /* trick */
+            cursor: pointer;
             color:@bleu-fonce;
+
+            input{
+                width: auto;
+                float: right;
+            }
         }
-        input{
-            float: right;
-        }
+
     }
 }
 
@@ -777,14 +814,30 @@ textarea{
     bottom: 0;
     z-index: 1;
     background-color: @bleu;
-    /*    background-image: url(../img/background.jpg);
-        background-repeat:no-repeat;
-        background-position:center bottom;
-        background-size:cover;*/
+    /*
+    background-image: url(../img/background.jpg);
+    background-repeat:no-repeat;
+    background-position:center bottom;
+    background-size:cover;
+    */
 
     color:white;
     padding:5%;
     .box-shadow(3px 3px 5px);
+
+    /* La couleur de fond change à chaque étape */
+    &&.etape-1{
+        background-color: darken(@rose, 10%);
+    }
+    &&.etape-2{
+        background-color: lighten(@violet, 5%);
+    }
+    &&.etape-3{
+        background-color: darken(@vert, 5%);
+    }
+    &&.etape-4{
+        background-color: darken(@orange, 5%);
+    }
 
     .panel{
         position:fixed;
@@ -884,7 +937,7 @@ textarea{
         .date{
             color:@gris-fonce;
             text-align:left;
-            margin-left:10%;
+            margin-left:7%;
 
             select{
                 display: inline-block;

@@ -5,8 +5,18 @@ Controllers.controller('SettingsCtrl', ['$scope', '$window', 'Data', 'Notificati
     function ($scope, $window, Data, Notification){
 
         /*
-         * A FAIRE :
+         * A FAIRE : Mon compte
          */
+
+        /*
+         * Notifications : activer/désactiver
+         */
+        $scope.checked = Notification.isNotification();
+
+        $scope.switchNotifications = function(){
+
+            $scope.checked = Notification.switch();
+        };
 
         /*
          * Efface toutes les données stockées dans localStorage

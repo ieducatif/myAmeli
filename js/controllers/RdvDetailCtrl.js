@@ -1,17 +1,72 @@
 /*
  * DetailCtrl : affiche la carte détaillée de l'évènement selectionné
  */
-Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$filter', 'Data',
-    function ($scope, $window, $routeParams, $filter, Data){
-
-        /*
-         * @$routeParams.id : contient l'id de l'évenement
-         */
+Controllers.controller('RdvDetailCtrl', ['$scope', '$log', '$window', '$routeParams', '$filter', 'Data',
+    function ($scope, $log, $window, $routeParams, $filter, Data){
 
         /*
          * Récupère le détail de l'évènement depuis le service Data
+         * et charge le scope
          */
-        $scope.item = Data.getRdvDetail();
+        $scope.item = Data.getRdvDetail([{
+                forceUpdate : false
+            }]);
+
+        /*
+         * Contrôle si le délai prévisionnel de remboursement est dépassé
+         * si oui, proposer les canaux de contact : mail et tél
+         * + 1 jours
+         */
+        $scope.dateLimite = new Date().getTime() + (1000 * 60 * 60 * 24 * 17);
+
+        $scope.showContact = function (){
+
+            /*
+             * Popup de confirmation
+             */
+            $scope.popUrl = 'views/popups/show-contact.html';
+
+            /*
+             * Personnalisation de la popup
+             */
+            $scope.popup = {
+                "titre" : "Délai trop long ?",
+                "message" : "D'après nos calculs, le délai de remboursement semble trop long. Si vous estimez que nous avons raison, contactez votre caisse primaire d'assurance maladie.",
+                "class" : "info",
+                "boutons" : {
+                    "confirm" : {
+                        "titre" : "Supprimer",
+                        "action" : "confirm()"
+                    },
+                    "cancel" : {
+                        "titre" : "Fermer",
+                        "action" : "cancel()"
+                    }
+                }
+            };
+
+            /*
+             * L'utilisateur annule
+             */
+            $scope.cancel = function (){
+
+                /*
+                 * Vide la vue
+                 */
+                $scope.popUrl = null;
+            };
+
+        };
+
+        /*
+         * Met à jour l'état de la notification pour ne pas qu'elle s'affiche de nouveau
+         */
+        if($scope.item.etat === true && $scope.item.notification === false){
+
+            Data.updateRdv({
+                notification : true
+            });
+        }
 
         /*
          *  Mise à jour dynamique lors de la saisie d'une note
@@ -24,7 +79,7 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
         });
 
         /*
-         * Change la date du RDV
+         * Permet de mettre à jour la date du RDV
          */
         $scope.changeDate = function (){
 
@@ -100,7 +155,7 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
             }
 
             /*
-             * Met à jour les valeurs des <select>
+             * Met à jour et formate les valeurs des <select>
              */
             $scope.dateJour = $filter('date')($scope.item.date, "dd");
             $scope.dateMois = $filter('date')($scope.item.date, "MM");
@@ -138,7 +193,7 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
             };
 
             /*
-             * L'utilisateur clique sur Valider
+             * L'utilisateur clique sur le bouton de Valider
              */
             $scope.confirm = function (){
 
@@ -230,7 +285,7 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
             };
 
             /*
-             * L'utilisateur annule l'archivage
+             * L'utilisateur annule la duplication
              */
             $scope.cancel = function (){
 
@@ -276,13 +331,13 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
             $scope.confirm = function (){
 
                 /*
-                 * Actions :
-                 * 1 - Archive l'évènement localStorage
-                 * 2 - Archive le rdv sur le serveur
-                 * 3 - Rediriger vers la page d'accueil
+                 * Sauvegarde de la nouvelle date via le service Data
                  */
+                Data.updateRdv({
+                    archive : true
+                });
 
-                $window.location.hash = '#/';
+                $window.location.hash = '#/rdv-list';
             };
 
             /*
@@ -338,10 +393,10 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$window', '$routeParams', '$
                  * 3 - Rediriger vers la page d'accueil
                  */
                 Data.deleteRdv();
-				
-				/*
-				* Redirection vers la liste des RDV
-				*/
+
+                /*
+                 * Redirection vers la liste des RDV
+                 */
                 $window.location.hash = '#/rdv-list';
             };
 

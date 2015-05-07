@@ -1,9 +1,9 @@
 <ul class="settings">
     <li><a href="">Mon compte</a></li>
-    <li><a href="">Mes bénéficiaires</a></li>
     <li>
-        <label for="notifications">Notifications</label>
-        <input type="checkbox" name="notification" value="true" checked=""/>
+        <label data-ng-click="switchNotifications()" for="notifications">Notifications
+            <input data-ng-checked="checked" type="checkbox" name="notification"/>
+        </label>
     </li>
     <li><a data-ng-click="simulerNotification()" href="">Simuler une notification</a></li>
     <li><a data-ng-click="clearCache()" href="">Réinitialiser</a></li>

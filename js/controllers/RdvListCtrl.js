@@ -28,9 +28,7 @@ Controllers.controller('RdvListCtrl', ['$scope', '$window', '$log', 'Data',
          * @items : objet qui contient tous les évènements récupérés depuis le service Data
          */
         $scope.items = Data.getRdvList({
-            forceUpdate : false,
-            notification : true,
-            user : Data.getUser()
+            forceUpdate : false
         });
 
         /*

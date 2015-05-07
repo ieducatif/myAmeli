@@ -14,24 +14,35 @@
 
     </header>
 
-    <div class="content">
+    <!--
+    Etat et détail du remboursement
+    -->
+    <div class="remboursement {{item.etat}}">
 
-        <!--
-        Etat et détail du remboursement
-        -->
-        <div class="remboursement {{item.etat}}">
+        <div class="etat">
+            <div class="{{item.etat}}"></div>
+        </div>
 
-            <div class="etat">
-                <div class="{{item.etat}}"></div>
-            </div>
+        <div data-ng-if="item.etat === true" class="date">{{item.remboursement.date| date:'dd/MM/yyyy'}}</div>
 
-            <div data-ng-if="item.etat === true" class="date">{{item.remboursement.date| date:'dd/MM/yyyy'}}</div>
+        <div data-ng-if="item.etat === true" class="montant">{{item.remboursement.montant| currency:'':2}} €</div>
 
-            <div data-ng-if="item.etat === true" class="montant">{{item.remboursement.montant| currency:'':2}} €</div>
+        <div data-ng-if="item.etat === false" class="message">Prévu le {{item.datePrevisionnelle| date:'dd/MM/yyyy'}}</div>
 
-            <div data-ng-if="item.etat === false" class="message">En attente</div>
+        <div data-ng-if="item.datePrevisionnelle < dateLimite && item.etat === false" class="contact">
+
+            <a href="tel:3646">
+                <img data-ng-src="img/phone-white.svg">
+            </a>
+
+            <a data-ng-click="showContact()" href="">
+                <img data-ng-src="img/help-white.svg">
+            </a>
 
         </div>
+    </div>
+
+    <div class="content">
 
         <h4 class="titre">{{item.titre}}</h4>
 
@@ -51,7 +62,7 @@
 
         <map data-ng-hide="true" class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
         -->
-        
+
         <blockquote class="notes">
             <h3>Notes</h3>
             <textarea data-ng-model="item.notes">{{item.notes}}</textarea>
@@ -86,19 +97,19 @@ Reçoit les popup : voir directives.js
 <popup data-ng-translude></popup>
 
 <script>
-    /*
-     * Permet de changer la couleur de remplissage d'un élément du fichier SVG.
-     *
-     * @idSVG : id de l'image
-     * @idElement : id de l'élement à colorer dans le SVG
-     * @color : couleur à utiliser
-     */
-    var svgFill = function (idSVG, idElement, color){
+            /*
+             * Permet de changer la couleur de remplissage d'un élément du fichier SVG.
+             *
+             * @idSVG : id de l'image
+             * @idElement : id de l'élement à colorer dans le SVG
+             * @color : couleur à utiliser
+             */
+            var svgFill = function (idSVG, idElement, color){
 
-        var svg = document.getElementById(idSVG);
+                var svg = document.getElementById(idSVG);
 
-        var element = svg.getSVGDocument().getElementById(idElement);
+                var element = svg.getSVGDocument().getElementById(idElement);
 
-        element.setAttribute("fill", color);
-    };
+                element.setAttribute("fill", color);
+            };
 </script>

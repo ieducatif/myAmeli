@@ -13,6 +13,9 @@
   -moz-box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
   outline: none;
 }
 body {
@@ -69,8 +72,8 @@ form {
 }
 input,
 select {
-  background-color: transparent;
   display: block;
+  background-color: transparent;
   width: 100%;
   margin-bottom: 15px;
   border: none;
@@ -87,6 +90,11 @@ input:focus,
 select:focus {
   border-color: deepskyblue;
 }
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
 textarea {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans serif;
   font-size: 14px;
@@ -96,6 +104,9 @@ textarea {
 /* header */
 .main-header {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
   width: 100%;
   padding: 0;
@@ -400,6 +411,7 @@ textarea {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
+  /* Barre du statut et des détails du remboursement */
 }
 .detail-rdv .header {
   padding: 15px;
@@ -426,6 +438,10 @@ textarea {
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
 }
+.detail-rdv .header .date,
+.detail-rdv .header .heure {
+  cursor: pointer;
+}
 .detail-rdv .header .date {
   float: left;
   width: 33%;
@@ -439,20 +455,14 @@ textarea {
   vertical-align: middle;
   text-align: right;
 }
-.detail-rdv .content {
-  padding: 15px;
-  padding-top: 0;
-  /* Barre du statut et des détails du remboursement */
-}
-.detail-rdv .content .remboursement {
+.detail-rdv .remboursement {
   margin-bottom: 15px;
   padding: 10px 15px;
-  margin-left: -15px;
-  width: calc(115%);
+  width: 100%;
   color: #fff;
   /* Affiché que si l'état est à false */
 }
-.detail-rdv .content .remboursement:after {
+.detail-rdv .remboursement:after {
   display: block;
   float: none;
   clear: both;
@@ -460,31 +470,47 @@ textarea {
   content: "";
   visibility: hidden;
 }
-.detail-rdv .content .remboursement.false {
+.detail-rdv .remboursement.false {
   background-color: #ffc04d;
   border-top: solid 1px #ffb733;
   border-bottom: solid 1px #ffb733;
 }
-.detail-rdv .content .remboursement.true {
+.detail-rdv .remboursement.true {
   background-color: #b8dc70;
   border-top: solid 1px #aed75b;
   border-bottom: solid 1px #aed75b;
 }
-.detail-rdv .content .remboursement .date,
-.detail-rdv .content .remboursement .etat,
-.detail-rdv .content .remboursement .montant,
-.detail-rdv .content .remboursement .message {
+.detail-rdv .remboursement .date,
+.detail-rdv .remboursement .etat,
+.detail-rdv .remboursement .montant,
+.detail-rdv .remboursement .message,
+.detail-rdv .remboursement .contact {
   float: left;
-  width: calc(100% / 3.3);
+  width: calc(100% / 3);
   text-align: center;
   line-height: 21px;
   vertical-align: middle;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.detail-rdv .content .remboursement .etat {
+.detail-rdv .remboursement .contact {
+  text-align: right;
+}
+.detail-rdv .remboursement .contact a {
+  display: inline-block;
+  margin-left: 10%;
+}
+.detail-rdv .remboursement .contact a img {
+  width: auto;
+  height: 20px;
+  vertical-align: middle;
+}
+.detail-rdv .remboursement .etat {
   text-align: left;
 }
-.detail-rdv .content .remboursement .etat .true,
-.detail-rdv .content .remboursement .etat .false {
+.detail-rdv .remboursement .etat .true,
+.detail-rdv .remboursement .etat .false {
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center center;
@@ -492,19 +518,23 @@ textarea {
   height: 20px;
   vertical-align: middle;
 }
-.detail-rdv .content .remboursement .etat .true {
+.detail-rdv .remboursement .etat .true {
   background-image: url(../img/check-white.svg);
 }
-.detail-rdv .content .remboursement .etat .false {
+.detail-rdv .remboursement .etat .false {
   background-image: url(../img/schedule-white.svg);
 }
-.detail-rdv .content .remboursement .montant {
+.detail-rdv .remboursement .montant {
   text-align: right;
   font-weight: bold;
 }
-.detail-rdv .content .remboursement .message {
+.detail-rdv .remboursement .message {
   text-align: center;
   font-weight: normal;
+}
+.detail-rdv .content {
+  padding: 15px;
+  padding-top: 0;
 }
 .detail-rdv .content .titre {
   margin-bottom: 10px;
@@ -678,19 +708,16 @@ textarea {
   padding: 6% 3%;
   vertical-align: middle;
 }
-.settings li label,
-.settings li input {
-  display: inline-block;
-  width: auto;
-  margin: 6% 3%;
+.settings li label {
+  display: block;
+  width: 100%;
+  padding: 6% 3%;
   /* trick */
   cursor: pointer;
-}
-.settings li label {
-  float: left;
   color: #0099cc;
 }
-.settings li input {
+.settings li label input {
+  width: auto;
   float: right;
 }
 /* Tutoriel */
@@ -704,15 +731,30 @@ textarea {
   bottom: 0;
   z-index: 1;
   background-color: deepskyblue;
-  /*    background-image: url(../img/background.jpg);
-        background-repeat:no-repeat;
-        background-position:center bottom;
-        background-size:cover;*/
+  /*
+    background-image: url(../img/background.jpg);
+    background-repeat:no-repeat;
+    background-position:center bottom;
+    background-size:cover;
+    */
   color: white;
   padding: 5%;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  /* La couleur de fond change à chaque étape */
+}
+.tutoriel.tutoriel.etape-1 {
+  background-color: #e00079;
+}
+.tutoriel.tutoriel.etape-2 {
+  background-color: #9a0099;
+}
+.tutoriel.tutoriel.etape-3 {
+  background-color: #8bb92d;
+}
+.tutoriel.tutoriel.etape-4 {
+  background-color: #e69500;
 }
 .tutoriel .panel {
   position: fixed;
@@ -824,7 +866,7 @@ textarea {
 .popup .content .date {
   color: #a9a9a9;
   text-align: left;
-  margin-left: 10%;
+  margin-left: 7%;
 }
 .popup .content .date select {
   display: inline-block;

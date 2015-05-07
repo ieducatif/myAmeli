@@ -1,8 +1,8 @@
 /*
  * Data : ce service gèrent les requêtes REST
  */
-Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'localStorageService', 'Notification',
-    function ($resource, $filter, $routeParams, $log, localStorageService, Notification){
+Services.factory('Data', ['$resource', '$filter', '$routeParams', '$interval', '$log', 'localStorageService', 'Notification',
+    function ($resource, $filter, $routeParams, $interval, $log, localStorageService, Notification){
 
         /*
          * Test pour résoudre le problème des navigateurs non compatibles avec localStorage
@@ -16,7 +16,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
             /*
              * Vérifie si les données sont dans localStorage et sont à jour
              */
-            statusData : function (){
+            isData : function (){
 
                 var status = false;
 
@@ -25,30 +25,36 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                     if(localStorageService.get("data-rdv") !== null && localStorageService.get("data-rdv-date") !== null){
 
                         status = true;
-                    }
-                }else{
 
-                    $log.warn("localStorage n'est pas supporté");
+                        /*
+                         * Vérifie si les données ne sont pas périmées
+                         * + d'1 jour
+                         */
+                        if(localStorageService.get("data-rdv-date") < (new Date().getTime() - (3600 * 24))){
+
+                            status = false;
+                        }
+                    }
                 }
 
                 return status;
             },
             /*
-             * Récupère la liste de tous les évènements pour un assuré et ses bénéficiaires
-             * A FAIRE : passer les paramètres
+             * Liste tous les RDV de l'assuré et de ses bénéficiaires
              *
              * @params : {
              *  forceUpdate : force la mise à jour depuis le serveur,
-             *  notification : active les notifications,
              *  user : NIR de l'utilisateur
              * }
              */
             getRdvList : function (params){
 
                 /*
-                 * Depuis localStorage si @params.forceUpdate = false
+                 * Données locales
+                 *
+                 * Charge les données depuis localStorage si elles sont présentes et si elles sont à jour
                  */
-                if(request.statusData() === true && params.forceUpdate === false){
+                if(request.isData() === true && params.forceUpdate === false){
 
                     $log.info('Données chargées depuis localStorage. params.forceUpdate = ', params.forceUpdate);
 
@@ -58,15 +64,16 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                 $log.info('Données chargées depuis le serveur. params.forceUpdate = ', params.forceUpdate);
 
                 /*
-                 * REST API
+                 * Données distantes
+                 *
                  * A FAIRE : URL de l'API distante
                  */
-                var urlData = '../datas/data.json';
+                var urlData = '../datas/data-rdv.json';
 
                 var resource = $resource(urlData, {}, {
                     query : {
                         method : 'GET',
-                        params : {user : params.user},
+                        params : {user : request.getUser()},
                         isArray : true,
                         responseType : 'json',
                         transformResponse : function (data){
@@ -76,30 +83,39 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                              */
                             var dateLastData = localStorageService.isSupported && localStorageService.get("data-rdv-date") !== null ? localStorageService.get("data-rdv-date") : null;
 
-                            $log.info("Date des dernières données : " + dateLastData);
-
                             /*
-                             * @compteurNotifications : nombre de notifications envoyées
-                             */
-                            var compteurNotifications = 0;
-
-                            /*
-                             * @arrItems : liste de tous les évènements
+                             * @arrItems : liste de tous les RDV
                              */
                             var arrItems = [];
 
                             angular.forEach(data, function (item){
 
                                 /*
-                                 * Ajoute la date sans l'heure pour le regroupement par date
-                                 *
-                                 * INFO : IE plante ici car ne sait pas faire un .split()
+                                 * @dateJour : date sans l'heure pour le regroupement par dates
                                  */
                                 var date = $filter('date')(item.date, "dd/MM/yyyy").split('/');
 
+                                /*
+                                 * Convertit la date en timestamp
+                                 */
                                 var timestamp = new Date(date[1] + '/' + date[0] + '/' + date[2]).getTime();
 
+                                /*
+                                 * Ajoute l'élément dateJour à l'objet
+                                 */
                                 item.dateJour = timestamp;
+
+                                /*
+                                 * A FAIRE :
+                                 * Ajoute la date prévisionnelle de remboursement
+                                 * + 5 jours
+                                 */
+                                if( item.etat === false ){
+
+                                    item.date = new Date().getTime();
+                                }
+
+                                item.datePrevisionnelle = item.date + (1000*60*60*24*5);
 
                                 /*
                                  * Ajoute l'item dans le tableau des RDV
@@ -107,26 +123,27 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                                 arrItems.push(item);
 
                                 /*
-                                 * Si la date du remboursement est plus récente que la date des dernières données on affiche une notification
-                                 * Risque : s'il y'a trop de notifications
+                                 * Envoi une notification si :
+                                 * 1 - les notifications sont activées
+                                 * 2 - la date des dernières données est connue
+                                 * 3 - la date de remboursement est supérieur à la date des dernières données
+                                 * 4 - le remboursement SS a été effectué
+                                 * 5 - la notification n'a pas encore été envoyée
                                  */
-                                if(dateLastData !== null){
+                                if(Notification.isNotification() === true
+                                    && dateLastData !== null
+                                    && item.remboursement.date > dateLastData
+                                    && item.etat === true
+                                    && item.notification === false){
 
-                                    if(params.notification === true && item.remboursement.date > dateLastData && item.etat === true && compteurNotifications < 3){
-
-                                        Notification.send({
-                                            id : item.id,
-                                            titre : 'Nouveau remboursement',
-                                            body : "Vous avez reçu un remboursement le " + $filter('date')(item.remboursement.date, 'dd/MM/yyyy') + " d'un montant de " + item.remboursement.montant + "€.",
-                                            icon : item.beneficiaire.avatar
-                                        });
-
-                                        /*
-                                         * Incrémente le compteur
-                                         */
-                                        compteurNotifications++;
-                                    }
+                                    Notification.send({
+                                        id : item.id,
+                                        titre : 'Nouveau remboursement',
+                                        body : "Vous avez reçu un remboursement le " + $filter('date')(item.remboursement.date, 'dd/MM/yyyy') + " d'un montant de " + item.remboursement.montant + "€.",
+                                        icon : item.beneficiaire.avatar
+                                    });
                                 }
+
                             });
 
                             /*
@@ -168,20 +185,22 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                 return resource.query();
             },
             /*
-             * Récupère le détail d'un évènement
+             * Récupère le détail d'un RDV
+             *
+             * @params : ATTENTION : il faut passer un objet {} pour récupérer tous les paramètres
              */
-            getRdvDetail : function (){
+            getRdvDetail : function (params){
 
                 /*
-                 * @data : tous les évènements
-                 * @result : détail d'un évènement
+                 * @data : tous les RDV
+                 * @result : détail d'un RDV
                  */
                 var data, result = null;
 
-                data = request.statusData() === true ? localStorageService.get("data-rdv") : request.getRdvList();
+                data = request.isData() === true ? localStorageService.get("data-rdv") : request.getRdvList(params);
 
                 /*
-                 * On parcoure l'objet à la recherche de notre évènement
+                 * On parcoure l'objet à la recherche du RDV
                  */
                 angular.forEach(data, function (item){
 
@@ -194,14 +213,14 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                 return result;
             },
             /*
-             * Supprimer un évènement
+             * Supprimer un RDV
              */
             deleteRdv : function (){
 
-                var data = request.statusData() === true ? localStorageService.get("data-rdv") : request.getRdvList();
+                var data = request.isData() === true ? localStorageService.get("data-rdv") : request.getRdvList();
 
                 /*
-                 * Nouvel objet qui contient les évènement
+                 * Nouvel objet qui contient les RDV
                  */
                 var arrData = [];
 
@@ -227,14 +246,14 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                 }
             },
             /*
-             * Mise à jour d'un évènement
+             * Mise à jour d'un RDV
              */
             updateRdv : function (params){
 
-                var data = request.statusData() === true ? localStorageService.get("data-rdv") : request.getRdvList();
+                var data = request.isData() === true ? localStorageService.get("data-rdv") : request.getRdvList();
 
                 /*
-                 * Nouvel objet qui contient les évènement
+                 * Nouvel objet qui contient les RDV
                  */
                 var arrData = [];
 
@@ -245,11 +264,9 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                         angular.forEach(params, function (value, param){
 
                             /*
-                             * Met l'élement avec la nouvelle valeur
+                             * Met à jour l'élément du RDV avec la nouvelle valeur
                              */
                             item[param] = value;
-
-                            $log.log(value);
                         });
                     }
 
@@ -271,6 +288,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
             },
             /*
              * Vérfie le login et mot de passe
+             *
              * @params : {
              *  nir : numéro SS
              *	password : mot de passe Ameli
@@ -288,7 +306,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
                 return true;
             },
             /*
-             * Retourne le NIR
+             * Retourne le NIR de l'utilisateur courant depuis localStorage
              */
             getUser : function (){
 
@@ -327,17 +345,18 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$log', 'local
             },
             /*
              * Réinitialise l'application
+             * Vide toutes les données de localStorage et DATA
              */
             clearCache : function (){
 
                 if(localStorageService.isSupported){
 
                     localStorageService.clearAll();
-
-                    DATA = [];
-
-                    DATA_DATE = null;
                 }
+
+                DATA = [];
+
+                DATA_DATE = null;
 
                 return true;
             }
