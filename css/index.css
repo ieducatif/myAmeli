@@ -54,6 +54,9 @@ ul li {
   margin: 0;
   padding: 0;
 }
+img {
+  vertical-align: middle;
+}
 /* Formulaires */
 ::-webkit-input-placeholder {
   color: #dcdcdc;
@@ -96,10 +99,21 @@ select {
   -webkit-appearance: none;
 }
 textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans serif;
   font-size: 14px;
   line-height: 22px;
   color: #000000;
+  border: solid 1px whitesmoke;
+  transition: border-color 0.1s linear;
+  -webkit-transition: border-color 0.1s linear;
+  -moz-transition: border-color 0.1s linear;
+}
+textarea:focus {
+  border-color: #99e5ff;
 }
 /* header */
 .main-header {
@@ -180,10 +194,10 @@ textarea {
   width: 100%;
   height: 100%;
   background-color: deepskyblue;
-  /*    background-image: url(../img/background.jpg);
-        background-repeat:no-repeat;
-        background-position:center bottom;
-        background-size:cover;*/
+  background-image: url(../img/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
 }
 .home .connexion {
   position: fixed;
@@ -285,7 +299,6 @@ textarea {
 .list-menu li a img {
   width: 20px;
   height: 20px;
-  vertical-align: middle;
 }
 .list-menu:after {
   display: block;
@@ -498,13 +511,11 @@ textarea {
   text-align: right;
 }
 .detail-rdv .remboursement .contact a {
-  display: inline-block;
-  margin-left: 10%;
+  display: block;
 }
 .detail-rdv .remboursement .contact a img {
   width: auto;
   height: 20px;
-  vertical-align: middle;
 }
 .detail-rdv .remboursement .etat {
   text-align: left;
@@ -580,11 +591,7 @@ textarea {
   margin-bottom: 5px;
 }
 .detail-rdv .content .notes textarea {
-  display: block;
-  width: 100%;
-  max-width: 100%;
   height: 70px;
-  overflow: hidden;
   background-color: transparent;
   border: none;
 }
@@ -681,6 +688,99 @@ textarea {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
 }
+/* contact : formulaire de contact */
+.contact-mail {
+  overflow: hidden;
+  background-color: white;
+  width: calc(100% - 1.5%);
+  margin: auto;
+  margin-bottom: 10px;
+  border: solid 1px #dcdcdc;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05);
+}
+.contact-mail .header {
+  border-bottom: solid 1px whitesmoke;
+  padding: 15px;
+}
+.contact-mail .header .titre {
+  font-weight: normal;
+  color: deepskyblue;
+}
+.contact-mail .content {
+  padding: 15px;
+  padding-bottom: 0;
+}
+.contact-mail .content .objet {
+  margin-top: 5px;
+  margin-bottom: 25px;
+  border-bottom: solid 1px #dcdcdc;
+  background-color: whitesmoke;
+}
+.contact-mail .content .objet span {
+  display: inline-block;
+  padding: 10px 20px;
+  color: deeppink;
+}
+.contact-mail .content .reference,
+.contact-mail .content .message {
+  margin-bottom: 25px;
+  border-bottom: solid 1px #dcdcdc;
+}
+.contact-mail .content .reference h4,
+.contact-mail .content .message h4 {
+  background-color: whitesmoke;
+  border-bottom: solid 1px #dcdcdc;
+  padding: 10px 20px;
+  color: deeppink;
+}
+.contact-mail .content .reference {
+  border-bottom: none;
+}
+.contact-mail .content .reference table {
+  table-layout: fixed;
+  margin: auto;
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  border-bottom: solid 1px #dcdcdc;
+}
+.contact-mail .content .reference table tr {
+  margin: 0;
+  padding: 0;
+}
+.contact-mail .content .reference table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+.contact-mail .content .reference table tr td {
+  border: none;
+  margin: 0;
+  padding: 10px;
+  width: 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.contact-mail .content .message {
+  margin-bottom: 0;
+}
+.contact-mail .content .message textarea {
+  height: 150px;
+  padding: 2%;
+  border: none;
+}
+.contact-mail .footer {
+  padding: 15px;
+}
+.contact-mail .footer .btn {
+  background-color: deeppink;
+  color: #fff;
+  border-color: deeppink;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+}
 /* Settings */
 .settings {
   background-color: white;
@@ -748,10 +848,10 @@ textarea {
   background-color: #e00079;
 }
 .tutoriel.tutoriel.etape-2 {
-  background-color: #9a0099;
+  background-color: #8bb92d;
 }
 .tutoriel.tutoriel.etape-3 {
-  background-color: #8bb92d;
+  background-color: #9a0099;
 }
 .tutoriel.tutoriel.etape-4 {
   background-color: #e69500;
@@ -862,6 +962,8 @@ textarea {
 .popup .content {
   padding: 10px;
   text-align: justify;
+  /* Cet élément est utilisé dans la popup qui permet de reporter un RDV */
+  /* Cet élément est utilisé dans la popup qui propose de contacter la CPAM */
 }
 .popup .content .date {
   color: #a9a9a9;
@@ -875,6 +977,25 @@ textarea {
 .popup .content .date select:after {
   display: inline-block;
   content: "/";
+}
+.popup .content .contact {
+  margin-top: 20px;
+  text-align: center;
+}
+.popup .content .contact:before,
+.popup .content .contact:after {
+  display: block;
+  float: none;
+  clear: both;
+  height: 0;
+  content: "";
+  visibility: hidden;
+}
+.popup .content .contact .btn {
+  background-color: #a9a9a9;
+  border-color: #a9a9a9;
+  color: white;
+  width: 40%;
 }
 .popup .footer {
   text-align: center;
@@ -918,6 +1039,7 @@ textarea {
 button,
 input[type=submit],
 input[type=reset] {
+  display: inline-block;
   padding: 8px 20px;
   background-color: rgba(0, 0, 0, 0.01);
   font-weight: bold;
@@ -977,13 +1099,20 @@ input[type=submit].large,
 input[type=reset].large {
   padding: 10px 22px;
 }
-.btn .icon,
-button .icon,
-input[type=submit] .icon,
-input[type=reset] .icon {
-  height: 22px;
+.btn.icon,
+button.icon,
+input[type=submit].icon,
+input[type=reset].icon {
   vertical-align: middle;
   line-height: normal;
+  text-align: center;
+}
+.btn.icon img,
+button.icon img,
+input[type=submit].icon img,
+input[type=reset].icon img {
+  height: 20px;
+  width: 20px;
 }
 .btn.flottant,
 button.flottant,

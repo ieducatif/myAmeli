@@ -1,4 +1,10 @@
 <!--
+Cette popup est appelée dans la page de détail d'un RDV quand le délai prévisionnel
+de remboursement est dépassé. Elle propose à l'utilisateur de contacter sa caisse
+d'assurance maladie.
+-->
+
+<!--
 Masque transparent
 -->
 <div class="popup-masque" data-ng-click="cancel()"></div>
@@ -14,6 +20,17 @@ Popup personalisable
 
     <div class="content">
         {{popup.message}}
+
+        <div class="contact">
+
+            <a href="tel:3646" class="btn icon">
+                <img src="img/phone-white.svg"> 3646
+            </a>
+
+            <a data-ng-href="#/contact/{{item.id}}" class="btn icon">
+                <img src="img/mail-white.svg">
+            </a>
+        </div>
     </div>
 
     <footer class="footer">

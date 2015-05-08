@@ -22,7 +22,9 @@
             "qualite": "C",
             "dateNaissance": 1430139379232,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 1,
@@ -47,13 +49,15 @@
             "qualite": "C",
             "dateNaissance": 1430139379232,
             "rang": 1
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 2,
         "archive": false,
         "notification": true,
-        "date": 1439273850661,
+        "date": 1431115221066,
         "titre": "Etab. April Morrow",
         "numero": 751225487,
         "type": "rdv",
@@ -72,13 +76,15 @@
             "qualite": "A",
             "dateNaissance": 1430139379232,
             "rang": 2
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 3,
         "archive": false,
         "notification": true,
-        "date": 1449273850661,
+        "date": 1431115221066,
         "titre": "Dr. Clarice Henderson",
         "numero": 751225487,
         "type": "rdv",
@@ -97,7 +103,9 @@
             "qualite": "A",
             "dateNaissance": 1430139379233,
             "rang": 1
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 4,
@@ -122,13 +130,15 @@
             "qualite": "A",
             "dateNaissance": 1430139379233,
             "rang": 1
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 5,
         "archive": false,
         "notification": true,
-        "date": 1439273850661,
+        "date": 1431115221066,
         "titre": "Dr. Aurelia Berry",
         "numero": 750294887,
         "type": "rdv",
@@ -147,7 +157,9 @@
             "qualite": "E",
             "dateNaissance": 1430139379234,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 6,
@@ -172,7 +184,9 @@
             "qualite": "C",
             "dateNaissance": 1430139379234,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 7,
@@ -197,7 +211,9 @@
             "qualite": "E",
             "dateNaissance": 1430139379234,
             "rang": 2
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 8,
@@ -222,7 +238,9 @@
             "qualite": "C",
             "dateNaissance": 1430139379235,
             "rang": 2
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 9,
@@ -247,7 +265,9 @@
             "qualite": "A",
             "dateNaissance": 1430139379235,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 10,
@@ -272,7 +292,9 @@
             "qualite": "C",
             "dateNaissance": 1430139379236,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 11,
@@ -297,7 +319,9 @@
             "qualite": "E",
             "dateNaissance": 1430139379236,
             "rang": 2
-        }
+        },
+        "dateJour": 1429221600000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 12,
@@ -322,13 +346,15 @@
             "qualite": "E",
             "dateNaissance": 1430139379236,
             "rang": 2
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 13,
         "archive": false,
         "notification": true,
-        "date": 1439273850661,
+        "date": 1431115221067,
         "titre": "Dr. Addie Ballard",
         "numero": 750294887,
         "type": "rdv",
@@ -347,13 +373,15 @@
             "qualite": "E",
             "dateNaissance": 1430139379237,
             "rang": 2
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 14,
         "archive": false,
         "notification": true,
-        "date": 1439273850661,
+        "date": 1431115221067,
         "titre": "Etab. Tessa Buchanan",
         "numero": 750245487,
         "type": "rdv",
@@ -372,13 +400,15 @@
             "qualite": "C",
             "dateNaissance": 1430139379237,
             "rang": 2
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 15,
         "archive": false,
         "notification": true,
-        "date": 1449273850661,
+        "date": 1431115221067,
         "titre": "Etab. Simmons Mcdaniel",
         "numero": 750294887,
         "type": "rdv",
@@ -397,7 +427,9 @@
             "qualite": "A",
             "dateNaissance": 1430139379238,
             "rang": 1
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 16,
@@ -422,7 +454,9 @@
             "qualite": "C",
             "dateNaissance": 1430139379238,
             "rang": 1
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 17,
@@ -447,13 +481,15 @@
             "qualite": "E",
             "dateNaissance": 1430139379238,
             "rang": 1
-        }
+        },
+        "dateJour": 1429221600000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 18,
         "archive": false,
         "notification": true,
-        "date": 1449273850661,
+        "date": 1431115221067,
         "titre": "Dr. Abby Blair",
         "numero": 751225487,
         "type": "rdv",
@@ -472,13 +508,15 @@
             "qualite": "C",
             "dateNaissance": 1430139379239,
             "rang": 2
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 19,
         "archive": false,
         "notification": true,
-        "date": 1439273850661,
+        "date": 1431115221067,
         "titre": "Etab. Marci Sullivan",
         "numero": 751225487,
         "type": "rdv",
@@ -497,13 +535,15 @@
             "qualite": "E",
             "dateNaissance": 1430139379239,
             "rang": 2
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 20,
         "archive": false,
         "notification": true,
-        "date": 1429273850661,
+        "date": 1431115221067,
         "titre": "Dr. Mccall Mcgee",
         "numero": 751225487,
         "type": "rdv",
@@ -522,13 +562,15 @@
             "qualite": "C",
             "dateNaissance": 1430139379240,
             "rang": 2
-        }
+        },
+        "dateJour": 1429221600000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 21,
         "archive": false,
         "notification": true,
-        "date": 1429273850661,
+        "date": 1431115221068,
         "titre": "Etab. Olson Todd",
         "numero": 751225487,
         "type": "rdv",
@@ -547,13 +589,15 @@
             "qualite": "A",
             "dateNaissance": 1430139379240,
             "rang": 2
-        }
+        },
+        "dateJour": 1429221600000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 22,
         "archive": false,
         "notification": true,
-        "date": 1439273850661,
+        "date": 1431115221068,
         "titre": "Etab. Hartman Gonzalez",
         "numero": 751225487,
         "type": "rdv",
@@ -572,7 +616,9 @@
             "qualite": "A",
             "dateNaissance": 1430139379241,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 23,
@@ -597,13 +643,15 @@
             "qualite": "E",
             "dateNaissance": 1430139379241,
             "rang": 2
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 24,
         "archive": false,
         "notification": true,
-        "date": 1449273850661,
+        "date": 1431115221068,
         "titre": "Dr. Audrey Perry",
         "numero": 751225487,
         "type": "rdv",
@@ -622,7 +670,9 @@
             "qualite": "C",
             "dateNaissance": 1430139379241,
             "rang": 2
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 25,
@@ -647,13 +697,15 @@
             "qualite": "C",
             "dateNaissance": 1430139379242,
             "rang": 1
-        }
+        },
+        "dateJour": 1439244000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 26,
         "archive": false,
         "notification": true,
-        "date": 1449273850661,
+        "date": 1431115221068,
         "titre": "Etab. Watson Conrad",
         "numero": 751225487,
         "type": "rdv",
@@ -672,13 +724,15 @@
             "qualite": "A",
             "dateNaissance": 1430139379242,
             "rang": 2
-        }
+        },
+        "dateJour": 1449270000000,
+        "delaiRemboursement": 432000000
     },
     {
         "id": 27,
         "archive": false,
         "notification": true,
-        "date": 1429273850661,
+        "date": 1431115221068,
         "titre": "Dr. Watkins Leblanc",
         "numero": 750245487,
         "type": "rdv",
@@ -697,6 +751,8 @@
             "qualite": "A",
             "dateNaissance": 1430139379243,
             "rang": 2
-        }
+        },
+        "dateJour": 1429221600000,
+        "delaiRemboursement": 432000000
     }
 ]

@@ -28,9 +28,9 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$interval', '
 
                         /*
                          * Vérifie si les données ne sont pas périmées
-                         * + d'1 jour
+                         * + 5 min
                          */
-                        if(localStorageService.get("data-rdv-date") < (new Date().getTime() - (3600 * 24))){
+                        if(localStorageService.get("data-rdv-date") < (new Date().getTime() - (1000 * 30))){
 
                             status = false;
                         }
@@ -68,7 +68,7 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$interval', '
                  *
                  * A FAIRE : URL de l'API distante
                  */
-                var urlData = '../datas/data-rdv.json';
+                var urlData = './datas/data-rdv.json';
 
                 var resource = $resource(urlData, {}, {
                     query : {
@@ -107,15 +107,18 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$interval', '
 
                                 /*
                                  * A FAIRE :
-                                 * Ajoute la date prévisionnelle de remboursement
-                                 * + 5 jours
+                                 * Ajoute le délai de remboursement pour ce type de prestation
                                  */
-                                if( item.etat === false ){
+                                if(item.etat === false){
 
                                     item.date = new Date().getTime();
                                 }
 
-                                item.datePrevisionnelle = item.date + (1000*60*60*24*5);
+                                /*
+                                 * Delai de remboursement sous forme de timestamp
+                                 * 5 jours
+                                 */
+                                item.delaiRemboursement = 5 * 24 * 60 * 60 * 1000;
 
                                 /*
                                  * Ajoute l'item dans le tableau des RDV
@@ -190,6 +193,8 @@ Services.factory('Data', ['$resource', '$filter', '$routeParams', '$interval', '
              * @params : ATTENTION : il faut passer un objet {} pour récupérer tous les paramètres
              */
             getRdvDetail : function (params){
+
+                $log.warn("getRdvDetail() params.forceUpdate : ", params.forceUpdate);
 
                 /*
                  * @data : tous les RDV

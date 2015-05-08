@@ -13,7 +13,7 @@ Controllers.controller('SettingsCtrl', ['$scope', '$window', 'Data', 'Notificati
          */
         $scope.checked = Notification.isNotification();
 
-        $scope.switchNotifications = function(){
+        $scope.switchNotifications = function (){
 
             $scope.checked = Notification.switch();
         };

@@ -8,16 +8,16 @@ Controllers.controller('RdvDetailCtrl', ['$scope', '$log', '$window', '$routePar
          * Récupère le détail de l'évènement depuis le service Data
          * et charge le scope
          */
-        $scope.item = Data.getRdvDetail([{
+        $scope.item = Data.getRdvDetail({
                 forceUpdate : false
-            }]);
+            });
 
         /*
          * Contrôle si le délai prévisionnel de remboursement est dépassé
          * si oui, proposer les canaux de contact : mail et tél
          * + 1 jours
          */
-        $scope.dateLimite = new Date().getTime() + (1000 * 60 * 60 * 24 * 17);
+        $scope.dateLimite = new Date().getTime();
 
         $scope.showContact = function (){
 

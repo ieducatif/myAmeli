@@ -27,13 +27,11 @@
 
         <div data-ng-if="item.etat === true" class="montant">{{item.remboursement.montant| currency:'':2}} €</div>
 
-        <div data-ng-if="item.etat === false" class="message">Prévu le {{item.datePrevisionnelle| date:'dd/MM/yyyy'}}</div>
+        <div data-ng-if="item.etat === false" class="message">
+            {{item.date + item.delaiRemboursement < dateLimite ? "Attendu le" : "Prévu le"}} {{item.date + item.delaiRemboursement| date:'dd/MM/yyyy'}}
+        </div>
 
-        <div data-ng-if="item.datePrevisionnelle < dateLimite && item.etat === false" class="contact">
-
-            <a href="tel:3646">
-                <img data-ng-src="img/phone-white.svg">
-            </a>
+        <div data-ng-if="item.date + item.delaiRemboursement < dateLimite && item.etat === false" class="contact">
 
             <a data-ng-click="showContact()" href="">
                 <img data-ng-src="img/help-white.svg">
@@ -56,12 +54,6 @@
         Redirige vers Google Maps. Lance l'application si installée sinon le navigateur.
         -->
         <a data-ng-href="https://www.google.fr/maps/dir/ma+position/{{item.adresse}}" target="_blank" class="itineraire">Itinéraire</a>
-
-        <!--
-        ngMap : A FAIRE : quel est l'intérêt d'avoir une carte ici ?
-
-        <map data-ng-hide="true" class="maps" center="{{item.adresse}}" zoom="14" disable-default-u-i="true"></map>
-        -->
 
         <blockquote class="notes">
             <h3>Notes</h3>

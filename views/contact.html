@@ -1,0 +1,46 @@
+<div class="contact-mail animated bounceInDown">
+
+    <form data-ng-submit="submit()" novalidate>
+
+        <header class="header">
+            <h1 class="titre">Ecrire à ma caisse</h1>
+        </header>
+
+        <div class="content">
+
+            <h4 class="objet">
+                <span>Objet : </span>
+                Remboursement non perçu
+            </h4>
+            <div class="reference">
+                <h4> Références qui seront communiquées à votre caisse</h4>
+                <table>
+                    <tr data-ng-repeat="reference in references">
+                        <td>{{reference.libelle}}</td>
+                        <td>{{reference.value}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="message">
+                <h4>Votre message</h4>
+                <textarea data-ng-model="message" placeholder="Rédigez votre message" required="required"></textarea>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <button type="submit" class="btn large">
+                Envoyer
+            </button>
+        </footer>
+
+    </form>
+
+</div>
+
+<!--
+Reçoit les popup : voir directives.js
+-->
+<popup data-ng-translude></popup>
+
+

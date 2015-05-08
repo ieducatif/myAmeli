@@ -10,10 +10,6 @@
 
 @rose : deeppink;
 
-@violet : purple;
-
-@orange : orange;
-
 @gris-clair : whitesmoke;
 @gris : darken(whitesmoke, 10%);
 @gris-fonce : darken(whitesmoke, 30%);
@@ -91,9 +87,6 @@
 
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
-    -webkit-text-size-adjust: none;
-    -webkit-user-select: none;
 
     outline:none;
 }
@@ -135,9 +128,6 @@ ul{
         padding: 0;
     }
 }
-img{
-    vertical-align: middle;
-}
 
 /* Formulaires */
 ::-webkit-input-placeholder {
@@ -157,8 +147,8 @@ form{
 }
 input,
 select{
-    display:block;
     background-color:transparent;
+    display:block;
     width:100%;
     margin-bottom:15px;
     border:none;
@@ -173,37 +163,16 @@ select{
         border-color: @bleu;
     }
 }
-select{
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
-}
 textarea{
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans serif;
     font-size: 14px;
     line-height:22px;
     color:@noir;
-    border:solid 1px @gris-clair;
-
-    .transition(border-color 0.1s linear);
-
-    &:focus{
-        border-color: lighten(@bleu, 30%);
-    }
-
 }
 
 /* header */
 .main-header{
     position: fixed;
-    top:0;
-    left: 0;
-    right: 0;
     z-index: 1;
     width: 100%;
     padding: 0;
@@ -221,7 +190,7 @@ textarea{
     li{
         display: block;
         float: left;
-        width: calc(~"100%/3");
+        width: calc(100%/3);
         text-align: center;
         border-bottom: solid 3px transparent;
         .transition(all 0.2s ease-in);
@@ -270,14 +239,11 @@ textarea{
 /* Home */
 .home{
     position:fixed;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    right:0;
-    bottom:0;
     width: 100%;
     height: 100%;
-
+    left: 0;
+    top: 0;
+    z-index: 2;
     background-color: @bleu;
     background-image: url(../img/background.jpg);
     background-repeat:no-repeat;
@@ -285,20 +251,20 @@ textarea{
     background-size:cover;
 
     .connexion{
-        position: fixed;
-        top:25%;
-        left: 30%;
-        right: 30%;
-        width:40%;
-        margin: 0 auto;
-        padding: 3%;
+        position:fixed;
+        width:50%;
+        margin:auto;
+        left:25%;
+        right:25%;
+        top:20%;
         background-color: #fff;
+        padding: 3%;
         .box-shadow(3px 3px 5px);
 
         @media all and (max-width:640px){
             width : 80%;
-            left: 10%;
-            right: 10%;
+            left:10%;
+            right:10%;
         }
 
         &:after{
@@ -307,7 +273,6 @@ textarea{
 
         h1{
             display: inline-block;
-            display:none;
             color:#fff;
             background-color: @bleu;
             margin-bottom: 5%;
@@ -315,16 +280,11 @@ textarea{
             .text-shadow(1px 1px 2px);
         }
 
-        input{
-            font-size: 16px;
-        }
-
         .btn{
             float:right;
             background-color: @rose;
-            border: none;
+            border-color: @rose;
             color:#fff;
-            padding: 10px 20px;
             .border-radius(0);
         }
     }
@@ -332,13 +292,13 @@ textarea{
     .brand{
         position:absolute;
         z-index: 1;
-        left: 0;
+        right: 0;
         bottom:0;
         color:#fff;
 
         h1{
-            font-size: 24px;
-            padding: 10%;
+            font-size: 30px;
+            padding: 7% 10%;
         }
     }
 }
@@ -356,7 +316,7 @@ textarea{
     li{
         display: block;
         float:left;
-        width: calc(~"100%/3");
+        width: calc(100% / 3);
         text-align: center;
 
         &:nth-child(2){
@@ -377,6 +337,7 @@ textarea{
             img{
                 width: 20px;
                 height: 20px;
+                vertical-align: middle;
             }
         }
     }
@@ -397,7 +358,7 @@ textarea{
         list-style: none;
         margin:auto;
         margin-bottom: 1%;
-        width: calc(~"100% - 2%");
+        width: calc(100% - 2%);
 
         &:after{
             .clearfix();
@@ -405,9 +366,9 @@ textarea{
 
         .avatar{
             float:left;
-            width:50px;
-            height:50px;
-            margin-top:4%;
+            width:48px;
+            height:48px;
+            margin-top:5%;
             margin-right:2%;
             background-color:@gris-clair;
             background-repeat:no-repeat;
@@ -419,7 +380,7 @@ textarea{
         a{
             display: block;
             float:right;
-            width: calc(~"100% - 50px - 2%"); // max - largeur de l'avatar - la marge
+            width: calc(~'100% - 48px - 2%'); // max - largeur de l'avatar - la marge
             background-color: #fff;
             border:solid 1px @gris;
             .box-shadow(2px 2px 3px);
@@ -492,7 +453,7 @@ textarea{
 .detail-rdv{
     overflow: hidden;
     background-color: white;
-    width:calc(~"100% - 1.5%");
+    width:calc(100% - 1.5%);
     margin: auto;
     margin-bottom: 10px;
     border:solid 1px @gris;
@@ -518,11 +479,6 @@ textarea{
             .border-radius(50px);
         }
 
-        .date,
-        .heure{
-            cursor:pointer;
-        }
-
         .date{
             float: left;
             width: 33%;
@@ -537,94 +493,79 @@ textarea{
             text-align: right;
         }
     }
-
-    /* Barre du statut et des détails du remboursement */
-    .remboursement{
-        margin-bottom: 15px;
-        padding: 10px 15px;
-        width: 100%;
-        color:#fff;
-
-        &:after{
-            .clearfix();
-        }
-
-        &.false{
-            background-color: lighten(orange, 15%);
-            border-top:solid 1px lighten(orange, 10%);
-            border-bottom:solid 1px lighten(orange, 10%);
-        }
-
-        &.true{
-            background-color: lighten(yellowgreen, 15%);
-            border-top:solid 1px lighten(yellowgreen, 10%);
-            border-bottom:solid 1px lighten(yellowgreen, 10%);
-        }
-
-        .date,
-        .etat,
-        .montant,
-        .message,
-        .contact{
-            float:left;
-            width: calc(~"100% / 3");
-            text-align: center;
-            line-height:21px;
-            vertical-align:middle;
-            .text-overflow(ellipsis);
-        }
-
-        .contact{
-            text-align:right;
-            a{
-                display:block;
-                img{
-                    width: auto;
-                    height: 20px;
-                }
-            }
-        }
-
-        .etat{
-            text-align:left;
-
-            .true,
-            .false{
-                display: inline-block;
-                background-repeat: no-repeat;
-                background-position: center center;
-                width: 20px;
-                height: 20px;
-                vertical-align:middle;
-            }
-            .true{
-                background-image: url(../img/check-white.svg);
-            }
-            .false{
-                background-image: url(../img/schedule-white.svg);
-            }
-        }
-
-        .date{
-        }
-
-        .montant{
-            text-align: right;
-            font-weight: bold;
-        }
-
-        /* Affiché que si l'état est à false */
-        .message{
-            text-align:center;
-            font-weight:normal;
-        }
-    }
-
     .content{
         padding: 15px;
         padding-top:0;
 
+        /* Barre du statut et des détails du remboursement */
+        .remboursement{
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            margin-left: -15px;
+            width: calc(100% + 15px);
+            color:#fff;
 
+            &:after{
+                .clearfix();
+            }
+
+            &.false{
+                background-color: lighten(orange, 15%);
+                border-top:solid 1px lighten(orange, 10%);
+                border-bottom:solid 1px lighten(orange, 10%);
+            }
+
+            &.true{
+                background-color: lighten(yellowgreen, 15%);
+                border-top:solid 1px lighten(yellowgreen, 10%);
+                border-bottom:solid 1px lighten(yellowgreen, 10%);
+            }
+
+            .date,
+            .etat,
+            .montant,
+            .message{
+                float:left;
+                width: calc(100% / 3.3);
+                text-align: center;
+                line-height:21px;
+                vertical-align:middle;
+            }
+
+            .etat{
+                text-align:left;
+
+                .true,
+                .false{
+                    display: inline-block;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    width: 20px;
+                    height: 20px;
+                    vertical-align:middle;
+                }
+                .true{
+                    background-image: url(../img/check-white.svg);
+                }
+                .false{
+                    background-image: url(../img/schedule-white.svg);
+                }
+            }
+
+            .date{
+            }
+
+            .montant{
+                text-align: right;
+                font-weight: bold;
+            }
+
+            /* Affiché que si l'état est à false */
+            .message{
+                text-align:center;
+                font-weight:normal;
+            }
+        }
 
         .titre{
             margin-bottom: 10px;
@@ -673,7 +614,11 @@ textarea{
             }
 
             textarea{
+                display: block;
+                width: 100%;
+                max-width: 100%;
                 height: 70px;
+                overflow: hidden;
                 background-color: transparent;
                 border:none;
             }
@@ -703,7 +648,7 @@ textarea{
             background-color: transparent;
             border:none;
             padding: 15px 0;
-            width: calc(~"100% / 3");
+            width: calc(100% / 3);
             .border-radius(0);
             .box-shadow(0 0 0);
             .transition(background-color 0.1s linear);
@@ -737,7 +682,7 @@ textarea{
 .search-ps{
     overflow: hidden;
     background-color: white;
-    width:calc(~"100% - 1.5%");
+    width:calc(100% - 1.5%);
     margin: auto;
     margin-bottom: 10px;
     border:solid 1px @gris;
@@ -770,234 +715,6 @@ textarea{
     }
 }
 
-
-/* contact : formulaire de contact */
-.contact-mail{
-    overflow: hidden;
-    background-color: white;
-    width:calc(~"100% - 1.5%");
-    margin: auto;
-    margin-bottom: 10px;
-    border:solid 1px @gris;
-    .box-shadow(2px 2px 3px);
-
-    .header{
-        border-bottom:solid 1px @gris-clair;
-        padding:15px;
-
-        .titre{
-            font-weight: normal;
-            color:@bleu;
-        }
-    }
-
-    .content{
-        padding:15px;
-        padding-bottom:0;
-
-        .objet{
-            margin-top: 5px;
-            margin-bottom: 25px;
-            border-bottom: solid 1px @gris;
-            background-color:@gris-clair;
-
-            span{
-                display: inline-block;
-                padding: 10px 20px;
-                color:@rose;
-            }
-        }
-
-        .reference,
-        .message{
-            margin-bottom: 25px;
-            border-bottom: solid 1px @gris;
-
-            h4{
-                background-color:@gris-clair;
-                border-bottom: solid 1px @gris;
-                padding: 10px 20px;
-                color:@rose;
-            }
-        }
-
-        .reference{
-            border-bottom: none;
-
-            table{
-                table-layout:fixed;
-                margin:auto;
-                width:100%;
-                border-spacing: 0;
-                border-collapse: separate;
-                border-bottom: solid 1px @gris;
-
-                tr{
-                    margin:0;
-                    padding:0;
-                    &:nth-child(even){
-                        background-color:lighten(@gris-clair, 2%);
-                    }
-
-                    td{
-                        border:none;
-                        margin:0;
-                        padding: 10px;
-                        width: 50%;
-                        .text-overflow(ellipsis);
-
-                    }
-                }
-
-            }
-        }
-
-        .message{
-            margin-bottom:0;
-
-            textarea{
-                height: 150px;
-                padding: 2%;
-                border:none;
-            }
-        }
-    }
-
-    .footer{
-        padding:15px;
-
-        .btn{
-            background-color:@rose;
-            color:#fff;
-            border-color: @rose;
-            .border-radius(0);
-        }
-    }
-}
-/* Settings */
-.settings{
-    background-color: white;
-    padding:0;
-    margin-top:-10px;
-
-    li{
-        border-bottom:solid 1px @gris-clair;
-
-        &:after{
-            .clearfix();
-        }
-
-        &:hover > *,
-            &:active > *{
-            background-color: lighten(@gris-clair, 3%);
-            color:@rose;
-        }
-
-        a{
-            display: block;
-            padding:6% 3%;
-            vertical-align:middle;
-        }
-
-        label{
-            display: block;
-            width: 100%;
-            padding: 6% 3%; /* trick */
-            cursor: pointer;
-            color:@bleu-fonce;
-
-            input{
-                width: auto;
-                float: right;
-            }
-        }
-
-    }
-}
-
-/* Tutoriel */
-.tutoriel{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top:0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    background-color: @bleu;
-    /*
-    background-image: url(../img/background.jpg);
-    background-repeat:no-repeat;
-    background-position:center bottom;
-    background-size:cover;
-    */
-
-    color:white;
-    padding:5%;
-    .box-shadow(3px 3px 5px);
-
-    /* La couleur de fond change à chaque étape */
-    &&.etape-1{
-        background-color: darken(@rose, 10%);
-    }
-    &&.etape-2{
-        background-color: darken(@vert, 5%);
-    }
-    &&.etape-3{
-        background-color: lighten(@violet, 5%);
-    }
-    &&.etape-4{
-        background-color: darken(@orange, 5%);
-    }
-
-    .panel{
-        position:fixed;
-        top:20%;
-        left:15%;
-        right: 15%;
-        width:70%;
-        margin:0 auto;
-
-        @media all and(max-width:480px){
-            width:90%;
-            left:5%;
-            right:5%;
-        }
-
-        h1{
-            font-size: 30px;
-            margin-bottom: 10%;
-            word-wrap:break-word;
-            .text-shadow(1px 1px 2px);
-        }
-
-        p{
-            font-size: 24px;
-            line-height: 40px;
-            margin-bottom: 10%;
-            text-align: left;
-            .text-shadow(1px 1px 2px);
-        }
-
-        div{
-            &:after{
-                .clearfix();
-            }
-
-            .btn{
-                position: fixed;
-                bottom:5%;
-                right:5%;
-                background-color: rgba(255,255,255,0.5);
-                border:none;
-                color:white;
-                .border-radius(0);
-                .box-shadow(0 0 0);
-            }
-        }
-    }
-}
 
 /* Popups */
 .popup{
@@ -1022,13 +739,11 @@ textarea{
     /* Masque transparent */
     &-masque{
         position:fixed;
-        z-index: 2;
         width: 100%;
         height: 100%;
         left: 0;
         top: 0;
-        bottom:0;
-        right:0;
+        z-index: 2;
         background-color: rgba(0,0,0,0.5);
     }
 
@@ -1046,11 +761,9 @@ textarea{
         padding: 10px;
         text-align: justify;
 
-        /* Cet élément est utilisé dans la popup qui permet de reporter un RDV */
         .date{
             color:@gris-fonce;
-            text-align:left;
-            margin-left:7%;
+            text-align:center;
 
             select{
                 display: inline-block;
@@ -1060,24 +773,6 @@ textarea{
                     display: inline-block;
                     content: "/";
                 }
-            }
-        }
-
-        /* Cet élément est utilisé dans la popup qui propose de contacter la CPAM */
-        .contact{
-            margin-top:20px;
-            text-align:center;
-
-            &:before,
-                &:after{
-                .clearfix;
-            }
-
-            .btn{
-                background-color: @gris-fonce;
-                border-color: @gris-fonce;
-                color:white;
-                width:40%;
             }
         }
     }
@@ -1142,7 +837,6 @@ textarea{
 button,
 input[type=submit],
 input[type=reset]{
-    display: inline-block;
     padding: 8px 20px;
     background-color: rgba(0,0,0,0.01);
     font-weight: bold;
@@ -1183,15 +877,10 @@ input[type=reset]{
     }
 
     /* Bouton avec une icône */
-    &.icon{
+    .icon{
+        height: 22px;
         vertical-align: middle;
         line-height: normal;
-        text-align:center;
-
-        img{
-            height: 20px;
-            width: 20px;
-        }
     }
 
     /* Bouton flottant */
@@ -1199,7 +888,7 @@ input[type=reset]{
         position: fixed;
         z-index: 1;
         bottom: 25px;
-        right: calc(~"100% / 5.5");
+        right: calc(100% / 5.5);
         background-color: @rose;
         width: 60px;
         height: 60px;
@@ -1241,18 +930,6 @@ input[type=reset]{
     animation-name: bounceInDown;
 }
 
-.fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-}
-
-.flipInY {
-    -webkit-backface-visibility: visible !important;
-    -webkit-animation-name: flipInY;
-    backface-visibility: visible !important;
-    animation-name: flipInY;
-}
-
 @-webkit-keyframes bounceInDown {
     0% {
         opacity: 0;
@@ -1286,46 +963,3 @@ input[type=reset]{
         transform: translateY(0);
     }
 }
-
-@-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-
-@-webkit-keyframes flipInY {
-    0% {
-        -webkit-transform: perspective(400px) rotateY(90deg);
-        opacity: 0;
-    }
-    40% {
-        -webkit-transform: perspective(400px) rotateY(-10deg);
-    }
-    70% {
-        -webkit-transform: perspective(400px) rotateY(10deg);
-    }
-    100% {
-        -webkit-transform: perspective(400px) rotateY(0deg);
-        opacity: 1;
-    }
-}
-@keyframes flipInY {
-    0% {
-        transform: perspective(400px) rotateY(90deg);
-        opacity: 0;
-    }
-    40% {
-        transform: perspective(400px) rotateY(-10deg);
-    }
-    70% {
-        transform: perspective(400px) rotateY(10deg);
-    }
-    100% {
-        transform: perspective(400px) rotateY(0deg);
-        opacity: 1;
-    }
-}
-

@@ -56,6 +56,10 @@ app.config(['$routeProvider', function ($routeProvider){
                 templateUrl : 'views/settings.html',
                 controller : 'SettingsCtrl'
             }).
+            when('/contact/:id', {
+                templateUrl : 'views/contact.html',
+                controller : 'ContactCtrl'
+            }).
             otherwise({
                 redirectTo : '/home'
             });
